@@ -1,0 +1,27 @@
+.orders{
+    margin-bottom: 20px;
+}
+.orders .row{
+    color:#000000;
+}
+.orders table td{
+    padding: 2px;
+    font-size: 13px;
+}
+.orders table td:nth-child(2n+1){
+    text-align: right;
+    color: #adadad;
+}
+
+.orders ul.list-group li{
+    margin-bottom: 10px;
+    padding-bottom: 0px
+}
+
+.orders ul.list-group li.open{
+    cursor: pointer;
+}
+
+.orders ul.list-group li.open div.sub{
+    display: none;
+}
