@@ -1,4 +1,4 @@
-var App = angular.module('App', ['ngRoute','flash']);
+var App = angular.module('App', ['ngRoute','flash','ui.bootstrap.datetimepicker']);
 
 
 (function () {
@@ -14,6 +14,9 @@ var App = angular.module('App', ['ngRoute','flash']);
                 when('/', {
                     templateUrl: '/app/login/login.html',
                     controller: 'LoginController'
+                }).when('/calc', {
+                    templateUrl: '/app/calc/index.html',
+                    controller: 'CalcController'
                 }).when('/logout', {
                     templateUrl: '/app/login/login.html',
                     controller: 'LogoutController'

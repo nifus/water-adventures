@@ -315,9 +315,11 @@ h6 {
 }
 
 #templatemo_logo {
-    background-image: url("/images/logo.png");
+   background-image: url("/images/logo.gif");
   background-color: #26b864;
-  height: 102px;
+  background-repeat: no-repeat;
+    background-position:center;
+height: 102px;
   display: block;
 }
 #templatemo_logo h1 {
