@@ -392,6 +392,7 @@ color: white;
    ========================================================================== */
 .site-slider {
   padding-top: 102px;
+  padding-top: 102px;
 }
 .site-slider ul li {
   float: left;
@@ -640,7 +641,7 @@ color: white;
   outline: 0;
   border: 0;
 }
-
+/*
 input, textarea {
   margin-bottom: 30px;
   background-color: #f6f7f8;
@@ -651,7 +652,7 @@ input, textarea {
   border: 0;
   border-bottom: 1px solid #b5c1c9;
   width: 100%;
-}
+}*/
 
 .contact-form textarea {
   height: 130px;

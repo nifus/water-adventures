@@ -1,10 +1,10 @@
-var App = angular.module('App', ['ngRoute','flash','ui.bootstrap.datetimepicker']);
+var App = angular.module('App', ['angularDateTimePicker']);
 
 
 (function () {
     'use strict';
 
-    App.filter('to_trusted', ['$sce', function ($sce) {
+    /*App.filter('to_trusted', ['$sce', function ($sce) {
         return function (text) {
             return $sce.trustAsHtml(text);
         };
@@ -31,10 +31,7 @@ var App = angular.module('App', ['ngRoute','flash','ui.bootstrap.datetimepicker'
                 when('/florist/orders', {
                     templateUrl: '/app/order/florist/order.html',
                     controller: 'OrderController'
-                })/*.
-             otherwise({
-             redirectTo: '/'
-             })*/;
+                });
         }]).filter('GetById', function () {
         return function (items, id) {
             var i = 0;
@@ -49,5 +46,5 @@ var App = angular.module('App', ['ngRoute','flash','ui.bootstrap.datetimepicker'
             }
             return null;
         }
-    })
+    })*/
 })();

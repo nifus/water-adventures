@@ -4,7 +4,7 @@
 
     App.controller('CalcController',
         [
-            '$scope', '$rootScope', '$location', 'AuthenticationService', 'UserService','Flash',
+            '$scope','calcService','$timeout',
             CalcController
         ]
     );
@@ -12,29 +12,49 @@
 
 
 
-    function CalcController($scope, $rootScope, $location, AuthenticationService, UserService,Flash) {
+    function CalcController($scope,calcService,$timeout) {
+        $scope.calc = calcService.Create();
 
-            //  executed after send login form
-        $scope.actions = {
-        };
         $scope.env = {
-            user:null,
-            password:null,
-            data_loading:false
+
+            canoeService : $scope.calc.getCanoeService(),
+            equipmentService : $scope.calc.getEquipmentService(),
+            model:{
+                date: {
+                    begin: {
+                        value:$scope.calc.getBeginDate('YYYY/MM/DD'),
+                        onShow:function(object){
+                            $scope.env.model.date.begin.picker = object;
+                            object.setOptions( {'minDate':$scope.calc.getBeginDate('YYYY/MM/DD') } )
+                        },
+                        picker:null
+                    },
+                    end: {
+                        value:$scope.calc.getEndDate('YYYY/MM/DD'),
+                        onShow:function(object){
+                            object.setOptions( {'minDate': $scope.calc.getBeginDate('YYYY/MM/DD') });
+                            $scope.env.model.date.end.picker = object;
+                        },
+                        picker:null
+                    }
+                }
+            }
         };
 
-        $scope.model = {
-            time_begin:null,
-            time_end:null
-        };
 
+        $scope.$watchCollection(function(){return [$scope.env.model.date.begin.value,$scope.env.model.date.end.value]},function(){
+            $scope.calc.setBeginDate( $scope.env.model.date.begin.value,'YYYY-MM-DD HH:mm' );
+            $scope.calc.setEndDate( $scope.env.model.date.end.value,'YYYY-MM-DD HH:mm' );
 
-        (function initController() {
+            if ( $scope.env.model.date.end.picker ){
+                $scope.env.model.date.end.picker.setOptions( {'minDate':$scope.calc.getBeginDate('YYYY/MM/DD') })
+            }
+        });
 
-        })();
-
-
-
+        $timeout(function(){
+            //  костыль для angular, который забывает иногда обновить представление
+            $scope.$apply();
+        },1000)
 
 
     }
