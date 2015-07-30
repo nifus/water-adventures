@@ -16,7 +16,9 @@
         $scope.calc = calcService.Create();
 
         $scope.env = {
-
+            order:{
+                end:true
+            },
             canoeService : $scope.calc.getCanoeService(),
             equipmentService : $scope.calc.getEquipmentService(),
             model:{
@@ -54,7 +56,7 @@
         $timeout(function(){
             //  костыль для angular, который забывает иногда обновить представление
             $scope.$apply();
-        },1000)
+        },2000)
 
 
     }
