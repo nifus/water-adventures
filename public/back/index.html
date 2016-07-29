@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title translate>Water-ADV Back Booking System</title>
+    <link rel="stylesheet" href="../components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body ng-app="backApp">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" translate>Water-ADV Back Booking System</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+            <ul class="nav navbar-nav navbar-right form-group">
+                <li><a href="">Расписание</a></li>
+                <li><a href="">Звонки</a></li>
+
+            </ul>
+
+            <form class="navbar-form navbar-right" role="search">
+                <button type="submit" class="btn btn-primary">Календарь</button>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+
+<div ui-view></div>
+
+
+</body>
+
+<script src="../components/angular/angular.js"></script>
+<script src="../components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../components/moment/min/moment-with-locales.min.js"></script>
+
+<script src="../apps/core/core.js"></script>
+<script src="../apps/core/cacheService.js"></script>
+<script src="../apps/core/scheduler/schedulerService.js"></script>
+<script src="../apps/core/scheduler/schedulerFactory.js"></script>
+
+<script src="../apps/core/kayak/kayakService.js"></script>
+<script src="../apps/core/kayak/kayakFactory.js"></script>
+
+
+<script src="../apps/backApp/backApp.js"></script>
+<script src="../apps/backApp/dashboard/dashboardController.js"></script>
+
+
+</html>

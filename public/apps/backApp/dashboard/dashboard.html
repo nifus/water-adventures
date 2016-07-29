@@ -1,0 +1,103 @@
+<div class="container-fluid" style="margin-top:70px">
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Календарь
+            <button type="button" class="btn btn-primary"
+                    ng-click="env.hideCalendar=false" ng-show="env.hideCalendar==true"
+            >Показать календарь
+            </button>
+        </div>
+
+        <div class="panel-body" ng-show="env.hideCalendar==false">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Праздники</th>
+                    <th ng-repeat="(month_id, obj) in env.calendar">{{month_id}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="list-group">
+                            <a class="list-group-item" style="cursor: pointer"
+                               ng-click="setDate('29-04-2016','10-05-2016')">29 апреля-10 мая</a>
+                            <a class="list-group-item" style="cursor: pointer"
+                               ng-click="setDate('10-06-2016','14-06-2016')">10 июня-14 июня</a>
+
+                        </div>
+                    </td>
+                    <td ng-repeat="(month_id, objs) in env.calendar">
+                        <div class="list-group">
+                            <a
+                                    ng-repeat="obj in objs"
+                                    style="cursor: pointer" ng-click="setDate(obj.start,obj.end)"
+                                    ng-class="{'list-group-item-danger':obj.isNow}"
+                                    class="list-group-item">{{obj.display}}</a>
+
+                        </div>
+
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="panel panel-success">
+        <div class="panel-body">
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="env.startDate">
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" ng-model="env.endDate">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel  panel-success">
+        <div class="panel-heading">Свободно</div>
+
+        <div class="panel-body">
+            <table class="table table-striped table-hover">
+                <tbody>
+                <tr ng-repeat="kayak in env.freeKayaks">
+                    <td>{{kayak.title}}</td>
+                    <td>{{kayak.desc}}</td>
+                    <td>{{kayak.vendor_code}}</td>
+                    <td></td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">Заказано</div>
+
+        <div class="panel-body">
+            <table class="table table-striped table-hover">
+                <tbody>
+                <tr ng-repeat="order in env.orders">
+                    <td>{{order.name}}</td>
+                    <td>{{order.phone}}</td>
+                    <td>{{order.begin_rent}}</td>
+                    <td><ul>
+                        <li ng-repeat="kayak in order.kayak">{{kayak.title}}</li>
+                    </ul></td>
+                    <td>{{order.note}}</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

@@ -298,9 +298,11 @@
                 <div class="col-md-12">
                     <div id="bx-pager">
                         <a data-slide-index="0" href=""><img src="images/slider/ladoga_yel_p.jpg" alt="Ладога 2"/></a>
-                        <a data-slide-index="1" href=""><img src="images/slider/viking_p.jpg" alt="Викинг 4.7"/></a>
+                        <a data-slide-index="1" href=""><img src="images/slider/neva_p.jpg" alt="Нева 3"/></a>
                         <a data-slide-index="2" href=""><img src="images/slider/sail_p.jpg"
                                                              alt="Ладога с парусным вооружением"/></a>
+                        <a data-slide-index="3" href=""><img src="images/slider/viking_p.jpg" alt="Викинг 4.7"/></a>
+
                     </div>
                 </div>
             </div>
@@ -381,14 +383,12 @@
                 <h3 class="section-title">Аренда байдарок</h3>
             </div>
             <div  class="col-md-12">
-                    Извините. Раздел находится в разработке. Забронировать байдарку можно по телефону <br/>
-                +7 911 986 00 83 мтс <br/>
+                Извините. Раздел находится в разработке. Забронировать байдарку можно по телефону
+                +7 911 986 00 83 мтс
                 +7 921 846 64 69 мегафон
-                <!--Здесь вы можете рассчитать стоимость аренды нашего оборудования, сделать заказ и сразу оплатить его или забронировать, оплатив 50% стоимости.
-
--->
+                <!--Здесь вы можете рассчитать стоимость аренды нашего оборудования и сделать заказ.-->
             </div>
-            <!-- /.col-md-12 -->
+
         </div>
         <!--
         <div class="row">
@@ -613,44 +613,9 @@
             </div>
         </div>
 
+-->
 
-        <div class="row" ng-show="env.order.end == true" >
-            <h4 style="margin-bottom: 15px;margin-left: 15px">Шаг 8. Оплата
-                <br/>
-                <small style="font-size: 12px"></small>
-            </h4>
 
-            <div style="opacity: 0.1">
-                <div class="col-xs-6 col-md-6">
-                    <div class="thumbnail">
-                        <div class="caption">
-                            <h5>Оплатить 50% цены заказа</h5>
-                            <p>Вы оплачиваете половину стоимости аренды выбранного оборудования сейчас, чтобы мы могли забронировать его для вас на выбранные даты.
-                                <br/>
-                                На месте вы оплачиваете вторую половину стоимости и залог за байдарки.
-                                <br/>
-                            </p>
-                            <p><button type="button" class="btn btn-success">Заплатить {{ calc.price }} рублей</button></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-6 col-md-6">
-                    <div class="thumbnail">
-                        <div class="caption">
-                            <h4>Оплатить 100% цены заказа</h4>
-                            <p>Вы оплачиваете полностью стоимости аренды выбранного оборудования  сейчас, чтобы мы могли забронировать его для вас на выбранные даты.
-                                <br/>
-                                На месте оплачиватся только залог за байдарки.
-                                <br/>
-                            </p>
-                            <p><button type="button" class="btn btn-success">Заплатить {{ calc.price }} рублей</button></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
     </div>
     <!-- /.container -->
 </div>
@@ -722,12 +687,40 @@
     <!-- /.container -->
 </div>
 
-<script src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+<!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=30855831&amp;from=informer"
+   target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/30855831/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+                                       style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:30855831,lang:'ru'});return false}catch(e){}" /></a>
+<!-- /Yandex.Metrika informer -->
 
-<script>
-    Parse.initialize("WfF0wKKfLgqRACw3MldwHfOKQG9G3WnmuvQzDdfd", "k31joZhQV9ilMo42qgezSrRrynkZ0DzRCH7B0q3g"); //GetBouquet | TEST
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter30855831 = new Ya.Metrika({
+                    id:30855831,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
 </script>
-
+<noscript><div><img src="https://mc.yandex.ru/watch/30855831" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 <script src="js/vendor/jquery-1.10.1.min.js"></script>
 <script src="js/jquery.easing-1.3.js"></script>
