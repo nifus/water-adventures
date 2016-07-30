@@ -50,10 +50,41 @@
     <div class="panel panel-success">
         <div class="panel-body">
             <div class="col-md-6">
-                <input type="text" class="form-control" ng-model="env.startDate">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="dropdown2" role="button"
+                       data-toggle="dropdown">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   value="{{env.startDate|date:'dd-MM-yyyy'}}">
+                                                                <span class="input-group-addon"><i
+                                                                        class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="env.startDate"
+                                        data-ng-change="changeDate()"
+                                        data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
+                    </ul>
+                </div>
+
             </div>
             <div class="col-md-6">
-                <input type="text" class="form-control" ng-model="env.endDate">
+                <div class="dropdown">
+                    <a class="dropdown-toggle"  role="button"
+                       data-toggle="dropdown">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   value="{{env.endDate|date:'dd-MM-yyyy'}}">
+                                                                <span class="input-group-addon"><i
+                                                                        class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="env.endDate"
+                                        data-ng-change="changeDate()"
+                                        data-datetimepicker-config="{minView:'day' , dropdownSelector: '#dropdown2' }"/>
+                    </ul>
+                </div>
 
             </div>
         </div>
@@ -67,9 +98,8 @@
                 <tbody>
                 <tr ng-repeat="kayak in env.freeKayaks">
                     <td>{{kayak.title}}</td>
-                    <td>{{kayak.desc}}</td>
-                    <td>{{kayak.vendor_code}}</td>
-                    <td></td>
+                    <td>{{kayak.color}}</td>
+                    <td>{{kayak.note}}</td>
                 </tr>
 
                 </tbody>
@@ -84,12 +114,13 @@
         <div class="panel-body">
             <table class="table table-striped table-hover">
                 <tbody>
-                <tr ng-repeat="order in env.orders">
+                <tr ng-repeat="order in env.busyKayaks">
                     <td>{{order.name}}</td>
                     <td>{{order.phone}}</td>
-                    <td>{{order.begin_rent}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.begin_rent}} - {{order.end_rent}}</td>
                     <td><ul>
-                        <li ng-repeat="kayak in order.kayak">{{kayak.title}}</li>
+                        <li ng-repeat="kayak in order.kayak"><strong>{{kayak.title}} {{kayak.color}}</strong> {{kayak.note}}</li>
                     </ul></td>
                     <td>{{order.note}}</td>
                 </tr>

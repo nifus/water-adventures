@@ -20,8 +20,6 @@ class SchedulerController extends BaseController
         if ( isset($all['equipment']) ){
             $flight->Equipment()->sync($all['equipment']);
         }
-
         return response()->json($flight->toArray(), 200, [], JSON_NUMERIC_CHECK );
-
     }
 }
