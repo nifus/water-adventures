@@ -1,0 +1,113 @@
+<div class="container-fluid" style="margin-top:70px">
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Добавить бронь</div>
+
+        <div class="panel-body">
+            <form action="">
+                <div class="form-group">
+                    <label>Дата начала</label>
+
+                    <div class="form-inline">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" role="button"
+                               data-toggle="dropdown">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" disabled
+                                           value="{{model.begin_rent|date:'dd-MM-yyyy'}}">
+                                                                <span class="input-group-addon"><i
+                                                                        class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="model.begin_rent"
+                                                data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
+                            </ul>
+                            <input type="email" class="form-control" placeholder="Время"
+                                   ng-model="model.begin_rent_time">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label>Дата конца</label>
+
+                    <div class="form-inline">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" id="dropdown2" role="button"
+                               data-toggle="dropdown">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" disabled
+                                           value="{{model.end_rent|date:'dd-MM-yyyy'}}">
+                                                                <span class="input-group-addon"><i
+                                                                        class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="model.end_rent"
+                                                data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
+                            </ul>
+                            <input type="email" class="form-control" placeholder="Время" ng-model="model.end_rent_time">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Свободные байдарки</label>
+                    <div class="checkbox" ng-repeat="kayak in  env.kayaks">
+                        <label>
+                            <input type="checkbox" checklist-model="model.kayak" checklist-value="kayak.id">
+                            {{kayak.title}} {{kayak.color}}
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Доп. Стаф</label>
+                    <div class="checkbox" ng-repeat="equipment in  env.equipments">
+                        <label>
+                            <input type="checkbox" checklist-model="model.equipment" checklist-value="equipment.id">
+                            {{equipment.title}}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Цена</label>
+                    <input type="text" class="form-control" ng-model="model.price" >
+                </div>
+
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="text" class="form-control" ng-model="model.phone">
+                </div>
+
+                <div class="form-group">
+                    <label>Имя</label>
+                    <input type="text" class="form-control" ng-model="model.name">
+                </div>
+
+
+                <div class="form-group">
+                    <label>Примечания</label>
+                    <textarea class="form-control" ng-model="model.note"></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Подтверждено</label>
+                    <input type="checkbox"  ng-model="model.confirmed" value="1">
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-default" ng-click="save(model)">Сохранить</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>

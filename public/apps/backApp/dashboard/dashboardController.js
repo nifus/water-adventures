@@ -96,12 +96,12 @@
             var day = date.day();
             if (day == 6) {
                 return {
-                    begin: date.substract('1','days'),
+                    begin: date.subtract('1','days'),
                     end: moment(date).add('3','days')
                 };
             }else if (day == 7) {
                 return {
-                    begin: date.substract('2','days'),
+                    begin: date.subtract('2','days'),
                     end: moment(date).add('3','days')
                 };
             } else{

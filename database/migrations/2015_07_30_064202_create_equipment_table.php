@@ -18,7 +18,7 @@ class CreateEquipmentTable extends Migration
             $table->timestamps();
             $table->string('title', 255)->nullable();
             $table->string('photo', 255)->nullable();
-            $table->decimal('price',6,2)->nullable();
+            $table->decimal('price',8,2)->nullable();
             $table->smallInteger('number')->default(1);
             $table->enum('isFixedPrice',['yes','no'])->default('yes');
             $table->smallInteger('order')->default(0);

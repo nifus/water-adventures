@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <title translate>Water-ADV Back Booking System</title>
     <link rel="stylesheet" href="../components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+    <link rel="stylesheet" href="../components/alertify.js/themes/alertify.core.css">
+    <link rel="stylesheet" href="../components/alertify.js/themes/alertify.bootstrap.css">
+
+    <script src="../components/jquery/dist/jquery.min.js"></script>
+    <script src="../components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
 </head>
 <body ng-app="backApp">
 <nav class="navbar navbar-default">
@@ -25,6 +33,7 @@
             <ul class="nav navbar-nav navbar-right form-group">
                 <li><a href="">Расписание</a></li>
                 <li><a href="">Звонки</a></li>
+                <li><a ui-sref="booking" >Добавить</a></li>
 
             </ul>
 
@@ -38,11 +47,12 @@
 <div ui-view></div>
 
 
-</body>
-
 <script src="../components/angular/angular.js"></script>
 <script src="../components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="../components/moment/min/moment-with-locales.min.js"></script>
+<script src="../components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+<script src="../components/checklist-model/checklist-model.js"></script>
+<script src="../components/alertify.js/lib/alertify.min.js"></script>
 
 <script src="../apps/core/core.js"></script>
 <script src="../apps/core/cacheService.js"></script>
@@ -52,9 +62,14 @@
 <script src="../apps/core/kayak/kayakService.js"></script>
 <script src="../apps/core/kayak/kayakFactory.js"></script>
 
+<script src="../apps/core/equipment/equipmentService.js"></script>
+<script src="../apps/core/equipment/equipmentFactory.js"></script>
 
 <script src="../apps/backApp/backApp.js"></script>
 <script src="../apps/backApp/dashboard/dashboardController.js"></script>
+<script src="../apps/backApp/booking/bookingController.js"></script>
+</body>
+
 
 
 </html>

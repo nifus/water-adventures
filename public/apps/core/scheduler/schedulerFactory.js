@@ -11,7 +11,7 @@
         return {
             getAll:getAll,
            // deleteAgent:deleteAgent,
-            //store:store,
+            store:store,
            // getById:getById
         };
 
@@ -59,19 +59,19 @@
             );
             return cache.promise;
         }
-
+         */
         function store(agent){
             var cache  = cacheService(
                 function(){
-                    $http.put(window.SERVER+'/backend/agent', agent).success(function (response) {
-                        cache.end( agentService(response) );
+                    $http.post('/backend/scheduler', agent).success(function (response) {
+                        cache.end( schedulerService(response) );
                     }).error( function(response){
                         cache.end( null );
                     })
                 }
             );
             return cache.promise;
-        }*/
+        }
 
     }
 

@@ -16,11 +16,12 @@ class CreateScheduleTable extends Migration
         {
             $table->increments('id');
             $table->timestamps();
-            $table->datetime('begin_rent')->nullable();
-            $table->datetime('end_rent')->nullable();
+            $table->date('begin_rent');
+            $table->date('end_rent');
             $table->string('phone')->nullable();
             $table->string('name')->nullable();
-            $table->string('time')->nullable();
+            $table->string('begin_rent_time')->nullable();
+            $table->string('end_rent_time')->nullable();
             $table->decimal('price',10,2)->nullable();
             $table->tinyInteger('confirmed',1)->default(0);
             $table->text('note');

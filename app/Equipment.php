@@ -12,6 +12,8 @@ class Equipment extends Model
 
 
     protected $fillable = ['created_at', 'updated_at', 'title','photo','desc','price','number','isFixedPrice','order'];
-
+    static function getAll(){
+        return self::get();
+    }
    
 }

@@ -17,4 +17,9 @@ class Scheduler extends Model
     {
        return $this->belongsToMany('App\Kayak','scheduler_kayak');
     }
+
+    public function Equipment()
+    {
+        return $this->belongsToMany('App\Equipment','scheduler_equipment');
+    }
 }
