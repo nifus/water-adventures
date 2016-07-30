@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call(KayakSeeder::class);
+        $this->call(EquipmentSeeder::class);
 
         Model::reguard();
     }
