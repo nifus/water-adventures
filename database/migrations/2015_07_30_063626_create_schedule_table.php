@@ -23,7 +23,7 @@ class CreateScheduleTable extends Migration
             $table->string('begin_rent_time')->nullable();
             $table->string('end_rent_time')->nullable();
             $table->decimal('price',10,2)->nullable();
-            $table->tinyInteger('confirmed',1);
+            $table->tinyInteger('confirmed');
             $table->text('note');
         });
 
