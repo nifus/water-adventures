@@ -11,11 +11,26 @@
             Object.End = moment(Object.end_rent);
 
 
-            Object.update = function(data){
+
+
+            Object.setWorkingStatus = function(data){
                 Object.waiting = true;
-                return $http.get('/backend/scheduler/'+this.id,data).then(
+                return $http.put('/backend/scheduler/'+this.id+'/status',{status:'working'}).then(
                     function(response){
                         Object.waiting = false;
+                        Object.status = 'working';
+
+                        return response.data;
+                    }
+                )
+            };
+
+            Object.setClosedStatus = function(data){
+                Object.waiting = true;
+                return $http.put('/backend/scheduler/'+this.id+'/status',{status:'closed'}).then(
+                    function(response){
+                        Object.waiting = false;
+                        Object.status = 'closed';
                         return response.data;
                     }
                 )

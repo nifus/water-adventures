@@ -59,7 +59,7 @@
                     <label>Байдарки</label>
                     <div class="checkbox" ng-repeat="kayak in  env.kayaks">
                         <label ng-style="{color:isFreeKayak(kayak) ? 'green' : 'red' }">
-                            <input type="checkbox" checklist-model="model.kayak" checklist-value="kayak.id">
+                            <input type="checkbox" checklist-change="updatePrice()" checklist-model="model.kayak" checklist-value="kayak.id">
                             {{kayak.title}} {{kayak.color}}
                         </label>
 
@@ -77,8 +77,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Цена</label>
+                    <label>Цена ({{env.price}})</label>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="model.old_client" ng-change="updatePrice()" >
+                            Постоянный клиент
+                        </label>
+                    </div>
                     <input type="text" class="form-control" ng-model="model.price" >
+                </div>
+
+                <div class="form-group">
+                    <label>Залог</label>
+                    <input type="text" class="form-control" ng-model="model.pledge">
                 </div>
 
                 <div class="form-group">

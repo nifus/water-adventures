@@ -1,7 +1,7 @@
 <div class="container-fluid" style="margin-top:70px">
 
 
-    <div class="panel panel-default">
+    <!--<div class="panel panel-default">
         <div class="panel-heading">Календарь
             <button type="button" class="btn btn-primary"
                     ng-click="env.hideCalendar=false" ng-show="env.hideCalendar==true"
@@ -10,6 +10,8 @@
         </div>
 
         <div class="panel-body" ng-show="env.hideCalendar==false">
+
+
             <table class="table">
                 <thead>
                 <tr>
@@ -37,98 +39,126 @@
                                     class="list-group-item">{{obj.display}}</a>
 
                         </div>
-
                     </td>
                 </tr>
-
                 </tbody>
             </table>
         </div>
-    </div>
 
 
-    <div class="panel panel-success">
-        <div class="panel-body">
-            <div class="col-md-6">
-                <div class="dropdown">
-                    <a class="dropdown-toggle" id="dropdown2" role="button"
-                       data-toggle="dropdown">
-                        <div class="input-group">
-                            <input type="text" class="form-control"
-                                   value="{{env.startDate|date:'dd-MM-yyyy'}}">
+    </div>-->
+
+
+    <div class="panel panel-primary">
+
+        <div class="panel-body" >
+            <div class=" col-md-12" style="margin:20px">
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdown2" role="button"
+                           data-toggle="dropdown">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       value="{{env.startDate|date:'dd-MM-yyyy'}}">
                                                                 <span class="input-group-addon"><i
                                                                         class="glyphicon glyphicon-calendar"></i></span>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <datetimepicker data-ng-model="env.startDate"
-                                        data-ng-change="changeDate()"
-                                        data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
-                    </ul>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <datetimepicker data-ng-model="env.startDate"
+                                            data-ng-change="changeDate()"
+                                            data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" role="button"
+                           data-toggle="dropdown">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       value="{{env.endDate|date:'dd-MM-yyyy'}}">
+                                                                <span class="input-group-addon"><i
+                                                                        class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <datetimepicker data-ng-model="env.endDate"
+                                            data-ng-change="changeDate()"
+                                            data-datetimepicker-config="{minView:'day' , dropdownSelector: '#dropdown2' }"/>
+                        </ul>
+                    </div>
+
                 </div>
 
             </div>
-            <div class="col-md-6">
-                <div class="dropdown">
-                    <a class="dropdown-toggle"  role="button"
-                       data-toggle="dropdown">
-                        <div class="input-group">
-                            <input type="text" class="form-control"
-                                   value="{{env.endDate|date:'dd-MM-yyyy'}}">
-                                                                <span class="input-group-addon"><i
-                                                                        class="glyphicon glyphicon-calendar"></i></span>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <datetimepicker data-ng-model="env.endDate"
-                                        data-ng-change="changeDate()"
-                                        data-datetimepicker-config="{minView:'day' , dropdownSelector: '#dropdown2' }"/>
-                    </ul>
+
+            <div class="col-md-12">
+            <div class="col-md-3">
+                <div class="panel  panel-success">
+                    <div class="panel-heading">Свободно</div>
+
+                    <div class="panel-body">
+                        <table class="table table-striped table-hover">
+                            <tbody>
+                            <tr ng-repeat="kayak in env.freeKayaks">
+                                <td>{{kayak.title}}</td>
+                                <td>{{kayak.color}}</td>
+                                <td>{{kayak.note}}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
 
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">Заказано</div>
+
+                    <div class="panel-body">
+                        <table class="table table-striped table-hover table-bordered">
+                            <tbody>
+                            <tr ng-repeat="order in env.busyKayaks">
+
+                                <td style="width: 150px">
+                                    {{order.phone}}<br>
+                                    {{order.name}}
+                                </td>
+                                <td>{{order.price}}</td>
+                                <td style="width: 200px">{{order.begin_rent}} - {{order.end_rent}}</td>
+                                <td style="width: 350px">
+                                    <ul>
+                                        <li ng-repeat="kayak in order.kayak"><strong>{{kayak.title}}
+                                            {{kayak.color}}</strong>
+                                            {{kayak.note}}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>{{order.note}}</td>
+                                <!--<td><a href=""><img style="width: 100px"
+                                                    src="http://icons.iconarchive.com/icons/graphicloads/filetype/256/pdf-icon.png"
+                                                    alt=""></a></td>-->
+                                <td>
+
+                                    <button type="button" class="btn btn-primary" ng-show="order.status=='new'" ng-click="setWorkStatus(order)">Отдал</button>
+                                    <button type="button" class="btn btn-success" ng-show="order.status=='working'" ng-click="setCloseStatus(order)">Принял</button>
+                                    <span class="label label-success" ng-show="order.status=='closed'">Закрыт</span>
+
+
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
 
-    <div class="panel  panel-success">
-        <div class="panel-heading">Свободно</div>
-
-        <div class="panel-body">
-            <table class="table table-striped table-hover">
-                <tbody>
-                <tr ng-repeat="kayak in env.freeKayaks">
-                    <td>{{kayak.title}}</td>
-                    <td>{{kayak.color}}</td>
-                    <td>{{kayak.note}}</td>
-                </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-
-    <div class="panel panel-danger">
-        <div class="panel-heading">Заказано</div>
-
-        <div class="panel-body">
-            <table class="table table-striped table-hover">
-                <tbody>
-                <tr ng-repeat="order in env.busyKayaks">
-                    <td>{{order.name}}</td>
-                    <td>{{order.phone}}</td>
-                    <td>{{order.price}}</td>
-                    <td>{{order.begin_rent}} - {{order.end_rent}}</td>
-                    <td><ul>
-                        <li ng-repeat="kayak in order.kayak"><strong>{{kayak.title}} {{kayak.color}}</strong> {{kayak.note}}</li>
-                    </ul></td>
-                    <td>{{order.note}}</td>
-                </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
 
 </div>

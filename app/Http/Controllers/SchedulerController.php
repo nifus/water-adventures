@@ -22,4 +22,9 @@ class SchedulerController extends BaseController
         }
         return response()->json($flight->toArray(), 200, [], JSON_NUMERIC_CHECK );
     }
+
+    function updateStatus($id,  Request $request){
+        $order = Scheduler::find($id)->update(['status'=>$request->get('status')]);
+        return response()->json(['success'=>true], 200, [], JSON_NUMERIC_CHECK );
+    }
 }

@@ -162,6 +162,20 @@
             })
         }
 
+        $scope.setWorkStatus = function(order){
+            alertify.confirm("Уверен ли ты работник, что заказ у клиента?", function (e) {
+                if (e) {
+                    order.setWorkingStatus()
+                }
+            });
+        }
+        $scope.setCloseStatus = function(order){
+            alertify.confirm("Уверен ли ты работник, что клиент вернул тебе все и не спиздил ни грамма?", function (e) {
+                if (e) {
+                    order.setClosedStatus()
+                }
+            });
+        }
     }
 })();
 

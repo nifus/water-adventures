@@ -8,7 +8,8 @@
         $scope.env = {
             kayaks: [],
             busyKayaks:[],
-            freeKayaks:[]
+            freeKayaks:[],
+            price: 0
         };
         $scope.model = {};
 
@@ -24,7 +25,7 @@
             $scope.env.equipments = response;
         });
         $q.all([schedulerPromise, kayakPromise, equipmentPromise]).then(function () {
-
+            $scope.setDate( getNextWeekend().begin.toDate(),  getNextWeekend().end.toDate() )
         });
 
         $scope.save = function (data) {
@@ -38,15 +39,51 @@
 
         $scope.changeDate = function(){
             $scope.setDate($scope.model.begin_rent, $scope.model.end_rent)
-
+        };
+        $scope.updatePrice = function(){
+            var selected_kayaks = [];
+            for( var i in  $scope.env.kayaks){
+                if ( $scope.model.kayak.indexOf($scope.env.kayaks[i].id)!=-1 ){
+                    selected_kayaks.push($scope.env.kayaks[i])
+                }
+            }
+            $scope.env.price = updatePrice($scope.model.begin_rent, $scope.model.end_rent, selected_kayaks, $scope.model.old_client)
         };
 
-        $scope.setDate = function (start, end) {
+        function updatePrice(begin, end, selected_kayaks, is_old_client){
+            var price = 0;
+            var number_of_days = moment(end).diff(begin, 'days');
+            var number_on_days = 0;
+            var number_off_days = 0;
 
-            if ( moment(start).isAfter(end) || end==undefined ){
-                $scope.model.end_rent = moment(start).add(2,'days').toDate();
+            for( var i=0;i<=number_of_days;i++ ){
+                if( isWeekend(moment(begin).add(i,'days') ) ){
+                    number_off_days++;
+                }else{
+                    number_on_days++;
+                }
+            }
+            for( var i in selected_kayaks ){
+                var kayak_price = selected_kayaks[i].price;
+                price = price+(kayak_price*number_off_days)+( (kayak_price/2)*number_on_days )
+            }
+            if ( number_of_days>4 ){
+                price = price  - (price/100)*10;
             }
 
+            if ( is_old_client==true ){
+                price = price  - (price/100)*5;
+            }
+            return price;
+        }
+
+        $scope.setDate = function (start, end) {
+            $scope.model.begin_rent = start;
+            if ( moment(start).isAfter(end) || end==undefined ){
+                $scope.model.end_rent = moment(start).add(2,'days').toDate();
+            }else{
+                $scope.model.end_rent = end;
+            }
 
 
 
@@ -68,10 +105,10 @@
                 return false;
             });
             $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
-            console.log($scope.env.busyKayaks)
-            console.log($scope.env.freeKayaks)
+            updatePrice($scope.model.begin_rent, $scope.model.end_rent, $scope.model.kayak)
 
         };
+
 
         function getFreeKayaks(orders, kayaks) {
             return $scope.env.kayaks.filter(function (kayak) {
@@ -94,6 +131,35 @@
                 }
             }
             return false;
+        }
+
+        function getNextWeekend() {
+            var date = moment();
+            var day = date.day();
+            if (day == 6) {
+                return {
+                    begin: date.subtract('1', 'days'),
+                    end: moment(date).add('3', 'days')
+                };
+            } else if (day == 7) {
+                return {
+                    begin: date.subtract('2', 'days'),
+                    end: moment(date).add('3', 'days')
+                };
+            } else {
+                return {
+                    begin: date.add(5 - day, 'days'),
+                    end: moment(date).add(7 - day, 'days')
+                };
+            }
+        }
+
+        function isWeekend(date){
+            var day = moment(date).format('d');
+            if ( day==0 || day==6 ){
+                return true;
+            }
+            return false
         }
 
     }

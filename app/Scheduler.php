@@ -11,7 +11,7 @@ class Scheduler extends Model
     protected $table = 'scheduler';
 
 
-    protected $fillable = ['created_at', 'updated_at', 'begin_rent','end_rent','phone','name','time','price','confirmed','note'];
+    protected $fillable = ['created_at', 'updated_at', 'begin_rent','end_rent','phone','name','time','price','confirmed','note','pledge','old_client','status'];
 
     public function Kayak()
     {
