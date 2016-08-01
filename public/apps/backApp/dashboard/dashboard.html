@@ -88,9 +88,16 @@
                                             data-datetimepicker-config="{minView:'day' , dropdownSelector: 'body' }"/>
                         </ul>
                     </div>
-
                 </div>
 
+                <div class="col-md-2">
+                    <select class="form-control" ng-model="env.status" data-ng-change="changeStatus(env.status)">
+                        <option value="">Статус</option>
+                        <option value="new">Нужно отдать</option>
+                        <option value="working">Нужно принять</option>
+                        <option value="closed">Закрытые</option>
+                    </select>
+                </div>
             </div>
 
             <div class="col-md-12">

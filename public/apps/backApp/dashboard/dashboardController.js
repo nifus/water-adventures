@@ -16,7 +16,7 @@
             freeKayaks: [],
             begin_task: null,
             end_task: null,
-            tasks:[]
+            tasks: []
         };
 
 
@@ -29,9 +29,23 @@
             $scope.setDate($scope.env.startDate, $scope.env.endDate)
         }
 
-        $scope.setDate = function (start, end) {
+        $scope.changeStatus = function (status) {
 
-            if ( moment(start).isAfter(end) ){
+            if (status == '') {
+                $scope.changeDate()
+            } else {
+                $scope.env.busyKayaks = $scope.env.orders.filter(function (order) {
+                    if (order.status == status) {
+                        return true
+                    }
+                    return false;
+                });
+            }
+
+        }
+
+        $scope.setDate = function (start, end) {
+            if (moment(start).isAfter(end)) {
                 end = start
             }
             $scope.env.weekend = moment(start, 'D-MM-YYYY').add(2, 'days');
@@ -55,12 +69,9 @@
                 if (order.Begin.isSameOrBefore(startMoment) && order.End.isSameOrAfter(endMoment)) {
                     return true
                 }
-
-
                 return false;
             });
             $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
-
         };
 
 
@@ -147,7 +158,7 @@
             $scope.setDate($scope.env.weekend.begin.toDate(), $scope.env.weekend.end.toDate());
             $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
 
-            $scope.setTaskDate(moment().toDate(), moment().add(1,'days').toDate());
+            $scope.setTaskDate(moment().toDate(), moment().add(1, 'days').toDate());
 
         });
 
@@ -167,14 +178,14 @@
             })
         }
 
-        $scope.setWorkStatus = function(order){
+        $scope.setWorkStatus = function (order) {
             alertify.confirm("Уверен ли ты работник, что заказ у клиента?", function (e) {
                 if (e) {
                     order.setWorkingStatus()
                 }
             });
         }
-        $scope.setCloseStatus = function(order){
+        $scope.setCloseStatus = function (order) {
             alertify.confirm("Уверен ли ты работник, что клиент вернул тебе все и не спиздил ни грамма?", function (e) {
                 if (e) {
                     order.setClosedStatus()
@@ -182,13 +193,13 @@
             });
         }
 
-        $scope.changeTaskDate = function(){
+        $scope.changeTaskDate = function () {
             $scope.setTaskDate($scope.env.begin_task, $scope.env.end_task)
         }
 
         $scope.setTaskDate = function (start, end) {
 
-            if ( moment(start).isAfter(end) ){
+            if (moment(start).isAfter(end)) {
                 end = start
             }
             $scope.env.weekend = moment(start, 'D-MM-YYYY').add(1, 'days');
