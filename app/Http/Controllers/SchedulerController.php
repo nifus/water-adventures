@@ -27,4 +27,8 @@ class SchedulerController extends BaseController
         $order = Scheduler::find($id)->update(['status'=>$request->get('status')]);
         return response()->json(['success'=>true], 200, [], JSON_NUMERIC_CHECK );
     }
+    function updateNote($id,  Request $request){
+        $order = Scheduler::find($id)->update(['note'=>$request->get('note')]);
+        return response()->json(['success'=>true], 200, [], JSON_NUMERIC_CHECK );
+    }
 }

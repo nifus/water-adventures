@@ -14,8 +14,11 @@
             orders: [],
             busyKayaks: [],
             freeKayaks: [],
-
+            begin_task: null,
+            end_task: null,
+            tasks:[]
         };
+
 
         //$scope.env.promises.push(schedulerPromise);
 
@@ -144,6 +147,8 @@
             $scope.setDate($scope.env.weekend.begin.toDate(), $scope.env.weekend.end.toDate());
             $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
 
+            $scope.setTaskDate(moment().toDate(), moment().add(1,'days').toDate());
+
         });
 
 
@@ -176,6 +181,39 @@
                 }
             });
         }
+
+        $scope.changeTaskDate = function(){
+            $scope.setTaskDate($scope.env.begin_task, $scope.env.end_task)
+        }
+
+        $scope.setTaskDate = function (start, end) {
+
+            if ( moment(start).isAfter(end) ){
+                end = start
+            }
+            $scope.env.weekend = moment(start, 'D-MM-YYYY').add(1, 'days');
+
+            $scope.env.begin_task = start;
+            $scope.env.end_task = end;
+
+
+            var startMoment = moment(start).subtract(1, 'hour');
+            var endMoment = moment(end).add(1, 'hour');
+            console.log($scope.env.orders)
+            $scope.env.tasks = $scope.env.orders.filter(function (order) {
+                if (order.Begin.isBetween(startMoment, endMoment)) {
+                    return true
+                }
+                if (order.End.isBetween(startMoment, endMoment)) {
+                    return true
+                }
+
+                return false;
+            });
+            console.log($scope.env.tasks)
+            //$scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
+
+        };
     }
 })();
 
