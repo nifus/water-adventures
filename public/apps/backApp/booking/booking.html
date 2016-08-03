@@ -55,24 +55,47 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Байдарки</label>
-                    <div class="checkbox" ng-repeat="kayak in  env.kayaks">
-                        <label ng-style="{color:isFreeKayak(kayak) ? 'green' : 'red' }">
-                            <input type="checkbox" checklist-change="updatePrice()" checklist-model="model.kayak" checklist-value="kayak.id">
-                            {{kayak.title}} {{kayak.color}}
-                        </label>
 
+                <div class="form-group">
+
+                    <div class="col-md-3">
+                        <label>Байдарки</label>
+                        <div class="checkbox" ng-repeat="kayak in  env.kayaks">
+                            <label ng-style="{color:isFreeKayak(kayak) ? 'green' : 'red' }">
+                                <input type="checkbox" checklist-change="updatePrice()" checklist-model="model.kayak" checklist-value="kayak.id">
+                                {{kayak.title}} {{kayak.color}}
+                            </label>
+
+                        </div>
+                        </div>
+                    <div class="col-md-3">
+                        <label>Весла</label>
+                        <div class="checkbox" ng-repeat="paddle in  env.paddles">
+                            <label>
+                                <input type="checkbox" checklist-model="model.paddle" checklist-value="paddle.id">
+                                {{paddle.title}} {{paddle.size}} ({{paddle.number}})
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label>Доп. Стаф</label>
-                    <div class="checkbox" ng-repeat="equipment in  env.equipments">
-                        <label>
-                            <input type="checkbox" checklist-model="model.equipment" checklist-value="equipment.id">
-                            {{equipment.title}}
-                        </label>
+                    <div class="col-md-3">
+                        <label>Гермы</label>
+                        <div class="checkbox" ng-repeat="bag in env.bags">
+                            <label>
+                                <input type="checkbox" checklist-model="model.bag" checklist-value="bag.id">
+                                {{bag.title}} {{bag.desc}} ({{bag.number}})
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label>Доп. Стаф</label>
+                        <div class="checkbox" ng-repeat="equipment in  env.equipments">
+                            <label>
+                                <input type="checkbox" checklist-model="model.equipment" checklist-value="equipment.id">
+                                {{equipment.title}}
+                            </label>
+                        </div>
                     </div>
                 </div>
 
@@ -102,7 +125,32 @@
                     <input type="text" class="form-control" ng-model="model.name">
                 </div>
 
+                <div class="form-group">
+                    <label>Город выдачи</label>
+                    <input type="text" class="form-control" ng-model="model.city_of_renting">
+                </div>
+                <div class="form-group">
+                    <label>Город сдачи</label>
+                    <input type="text" class="form-control" ng-model="model.city_of_return">
+                </div>
 
+                <div class="form-group">
+                    <label>Озеро выдачи</label>
+                    <input type="text" class="form-control" ng-model="model.place_of_renting">
+                </div>
+                <div class="form-group">
+                    <label>Озеро сдачи</label>
+                    <input type="text" class="form-control" ng-model="model.place_of_return">
+                </div>
+
+                <div class="form-group">
+                    <label>ФИО</label>
+                    <input type="text" class="form-control" ng-model="model.passport_name">
+                </div>
+                <div class="form-group">
+                    <label>ПС</label>
+                    <input type="text" class="form-control" ng-model="model.passport">
+                </div>
                 <div class="form-group">
                     <label>Примечания</label>
                     <textarea class="form-control" ng-model="model.note"></textarea>

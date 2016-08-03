@@ -1,8 +1,13 @@
 <?php
 
-//Route::post('scheduler', 'SchedulerController@Index');
+Route::get('pdf/{id}', function($id){
+    $order = App\Scheduler::find($id);
+
+    $pdf = \PDF::loadView('dogovor', ['order'=>$order]);
+    return $pdf->setPaper('a4')->stream();;
 
 
+});
 
 
 Route::group(['prefix' => 'backend'], function () {
@@ -11,4 +16,8 @@ Route::group(['prefix' => 'backend'], function () {
     Route::resource('scheduler', 'SchedulerController');
     Route::put('scheduler/{id}/status', 'SchedulerController@updateStatus');
     Route::put('scheduler/{id}/note', 'SchedulerController@updateNote');
+
+    Route::get('bag', 'BagController@index');
+    Route::get('paddle', 'PaddleController@index');
+
 });

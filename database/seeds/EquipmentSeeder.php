@@ -36,7 +36,7 @@ class EquipmentSeeder extends Seeder
         ]);
 
         DB::table('equipment')->insert([
-            'title' => 'ПЕрчатки',
+            'title' => 'Перчатки',
             'number' => '4',
             'price' => 100,
             'is_fixed_price' => 'yes',

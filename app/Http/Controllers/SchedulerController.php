@@ -9,7 +9,7 @@ class SchedulerController extends BaseController
 
 
     function index(){
-        $rows = Scheduler::with('Kayak')->orderBy('begin_rent','ASC');
+        $rows = Scheduler::with('Kayak')->with('Bag')->with('Paddle')->with('Equipment')->orderBy('begin_rent','ASC');
         return response()->json($rows->get()->toArray());
     }
 
@@ -19,6 +19,12 @@ class SchedulerController extends BaseController
         $flight->Kayak()->sync($all['kayak']);
         if ( isset($all['equipment']) ){
             $flight->Equipment()->sync($all['equipment']);
+        }
+        if ( isset($all['paddle']) ){
+            $flight->Paddle()->sync($all['paddle']);
+        }
+        if ( isset($all['bag']) ){
+            $flight->Bag()->sync($all['bag']);
         }
         return response()->json($flight->toArray(), 200, [], JSON_NUMERIC_CHECK );
     }

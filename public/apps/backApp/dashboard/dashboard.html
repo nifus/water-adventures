@@ -55,7 +55,7 @@
             <div class=" col-md-12" style="margin:20px">
                 <div class="col-md-2">
                     <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdown2" role="button"
+                        <a class="dropdown-toggle" id="dropdown1" role="button"
                            data-toggle="dropdown">
                             <div class="input-group">
                                 <input type="text" class="form-control"
@@ -67,13 +67,13 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <datetimepicker data-ng-model="env.startDate"
                                             data-ng-change="changeDate()"
-                                            data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
+                                            data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown1' }"/>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="dropdown">
-                        <a class="dropdown-toggle" role="button"
+                        <a class="dropdown-toggle" role="button"  id="dropdown2"
                            data-toggle="dropdown">
                             <div class="input-group">
                                 <input type="text" class="form-control"
@@ -85,7 +85,7 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <datetimepicker data-ng-model="env.endDate"
                                             data-ng-change="changeDate()"
-                                            data-datetimepicker-config="{minView:'day' , dropdownSelector: 'body' }"/>
+                                            data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2'  }"/>
                         </ul>
                     </div>
                 </div>
@@ -130,25 +130,36 @@
                             <tbody>
                             <tr ng-repeat="order in env.busyKayaks">
 
-                                <td style="width: 150px">
+                                <td style="width: 130px">
                                     {{order.phone}}<br>
                                     {{order.name}}
                                 </td>
-                                <td>{{order.price}}</td>
-                                <td style="width: 200px">{{order.BeginShort}} - {{order.EndShort}}</td>
-                                <td style="width: 350px">
-                                    <ul>
+                                <td><a target="_blank" ng-href="/pdf/{{order.id}}">{{order.price}}</a></td>
+                                <td style="width: 100px">{{order.BeginShort}}  {{order.EndShort}}</td>
+                                <td style="width: 250px">
+                                    <ul style="padding-left: 0px;list-style-type: none">
                                         <li ng-repeat="kayak in order.kayak"><strong>{{kayak.title}}
                                             {{kayak.color}}</strong>
                                             {{kayak.note}}
                                         </li>
                                     </ul>
                                 </td>
+                                <td style="width: 250px">
+                                    <ul style="padding-left: 0px;list-style-type: none">
+                                        <li ng-repeat="bag in order.bag"><strong>{{bag.title}}</strong> {{bag.desc}}</li>
+                                    </ul>
+                                    <ul style="padding-left: 0px;list-style-type: none">
+                                        <li ng-repeat="paddle in order.paddle"><strong>{{paddle.title}}</strong> {{paddle.desc}}</li>
+                                    </ul>
+                                    <ul style="padding-left: 0px;list-style-type: none">
+                                        <li ng-repeat="equipment in order.equipment"><strong>{{equipment.title}}</strong> {{equipment.desc}}</li>
+                                    </ul>
+                                </td>
                                 <td><textarea style="height:100px" class="form-control" ng-change="order.updateNote(order.note)" ng-model="order.note"></textarea></td>
                                 <!--<td><a href=""><img style="width: 100px"
                                                     src="http://icons.iconarchive.com/icons/graphicloads/filetype/256/pdf-icon.png"
                                                     alt=""></a></td>-->
-                                <td>
+                                <td style="width: 40px">
 
                                     <button type="button" class="btn btn-primary" ng-show="order.status=='new'" ng-click="setWorkStatus(order)">Отдал</button>
                                     <button type="button" class="btn btn-success" ng-show="order.status=='working'" ng-click="setCloseStatus(order)">Принял</button>
@@ -166,7 +177,7 @@
             </div>
         </div>
     </div>
-    <div class="panel panel-default">
+    <!--<div class="panel panel-default">
         <div class="panel-heading col-md-12" >
             <div class="col-md-12">
                 <div class="col-md-2">
@@ -187,7 +198,7 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <datetimepicker data-ng-model="env.begin_task"
                                             data-ng-change="changeTaskDate()"
-                                            data-datetimepicker-config="{minView:'day' , dropdownSelector: 'body' }"/>
+                                            data-datetimepicker-config="{minView:'day' }"/>
                         </ul>
                     </div>
                 </div>
@@ -205,7 +216,7 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <datetimepicker data-ng-model="env.end_task"
                                             data-ng-change="changeTaskDate()"
-                                            data-datetimepicker-config="{minView:'day' , dropdownSelector: 'body' }"/>
+                                            data-datetimepicker-config="{minView:'day' }"/>
                         </ul>
                     </div>
                 </div>
@@ -243,6 +254,6 @@
                 </tbody>
                 </table>
         </div>
-    </div>
+    </div>-->
 
 </div>

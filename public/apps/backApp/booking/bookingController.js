@@ -2,16 +2,23 @@
     'use strict';
     angular.module('backApp').controller('bookingController', bookingController);
 
-    bookingController.$inject = ['$scope', '$q', 'schedulerFactory', 'kayakFactory', 'equipmentFactory', '$state'];
+    bookingController.$inject = ['$scope', '$q', 'schedulerFactory', 'kayakFactory', 'equipmentFactory', '$state','paddleFactory','bagFactory'];
 
-    function bookingController($scope, $q, schedulerFactory, kayakFactory, equipmentFactory, $state) {
+    function bookingController($scope, $q, schedulerFactory, kayakFactory, equipmentFactory, $state,paddleFactory, bagFactory) {
         $scope.env = {
             kayaks: [],
             busyKayaks:[],
             freeKayaks:[],
-            price: 0
+            price: 0,
+            paddles:[],
+            bags:[]
         };
-        $scope.model = {};
+        $scope.model = {
+            city_of_renting:'г. Приозерск',
+            place_of_renting:'оз. Вуокса',
+            city_of_return:'г. Приозерск',
+            place_of_return:'оз. Вуокса',
+        };
 
 
         var schedulerPromise = schedulerFactory.getAll().then(function (response) {
@@ -24,7 +31,16 @@
         var equipmentPromise = equipmentFactory.getAll().then(function (response) {
             $scope.env.equipments = response;
         });
-        $q.all([schedulerPromise, kayakPromise, equipmentPromise]).then(function () {
+
+        var bagPromise = bagFactory.getAll().then(function (response) {
+            $scope.env.bags = response;
+        });
+
+        var paddlePromise = paddleFactory.getAll().then(function (response) {
+            $scope.env.paddles = response;
+        });
+
+        $q.all([schedulerPromise, kayakPromise, equipmentPromise,bagPromise, paddlePromise]).then(function () {
             $scope.setDate( getNextWeekend().begin.toDate(),  getNextWeekend().end.toDate() )
         });
 
