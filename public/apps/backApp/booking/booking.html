@@ -70,6 +70,11 @@
                         </div>
                     <div class="col-md-3">
                         <label>Весла</label>
+                        <ul style="list-style-type: none;padding:0px;width:100px">
+                            <li ng-repeat="paddle in  env.paddles">
+                                {{paddle.title}} {{paddle.size}}<input type="number" class="form-control" style="margin:10px"  ng-model="model.paddle[paddle.id]">
+                            </li>
+                        </ul>
                         <div class="checkbox" ng-repeat="paddle in  env.paddles">
                             <label>
                                 <input type="checkbox" checklist-model="model.paddle" checklist-value="paddle.id">

@@ -77,7 +77,7 @@ class Scheduler extends Model
             return 0;
         }
         foreach( $paddles as $paddle ){
-            
+
         }
 
     }
