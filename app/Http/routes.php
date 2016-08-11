@@ -13,9 +13,12 @@ Route::get('pdf/{id}', function($id){
 Route::group(['prefix' => 'backend'], function () {
     Route::resource('kayak', 'KayakController');
     Route::resource('equipment', 'EquipmentController');
-    Route::resource('scheduler', 'SchedulerController');
+    //Route::resource('scheduler', 'SchedulerController');
     Route::put('scheduler/{id}/status', 'SchedulerController@updateStatus');
     Route::put('scheduler/{id}/note', 'SchedulerController@updateNote');
+    Route::put('scheduler/{id}', 'SchedulerController@update');
+    Route::get('scheduler/{id}', 'SchedulerController@getById');
+    Route::get('scheduler', 'SchedulerController@index');
 
     Route::get('bag', 'BagController@index');
     Route::get('paddle', 'PaddleController@index');

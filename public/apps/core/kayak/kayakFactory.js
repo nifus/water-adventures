@@ -4,9 +4,9 @@
 
     angular.module('core')
         .factory('kayakFactory', kayakFactory);
-    kayakFactory.$inject = ['kayakService', '$http', 'cacheService'];
+    kayakFactory.$inject = ['kayakService', '$http', 'cacheService','$templateCache'];
 
-    function kayakFactory(kayakService, $http, cacheService) {
+    function kayakFactory(kayakService, $http, cacheService, $templateCache) {
 
         return {
             getAll:getAll,
@@ -19,16 +19,21 @@
             var cache  = cacheService(
                 function(){
                     $http.get('/backend/kayak').success(function (response) {
-                        var result = [];
-                        var i;
+                        var result = []; var i;
                         for( i in response ){
                             result.push( kayakService(response[i]) );
                         }
+                        $templateCache.put('kayak_get_all', result);
                         cache.end( result );
+
                     }).error(function (data, code) {
-                        cache.end({success: false, error: data.error});
+                      if ( code==0 ){
+                          cache.end( $templateCache.get('kayak_get_all') );
+                      }else{
+                          cache.end({success: false, error: data});
+                      }
                     })
-                }, 'kayak_getAll', 1
+                }, 'kayak_get_all', 1
             );
             return cache.promise;
         }

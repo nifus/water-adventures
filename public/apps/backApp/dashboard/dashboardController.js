@@ -167,12 +167,15 @@
             return $scope.env.kayaks.filter(function (kayak) {
                 for (var i in orders) {
                     var order = orders[i];
-                    for (var j in order.kayak) {
-                        var busy = order.kayak[j];
-                        if (busy.id == kayak.id) {
-                            return false;
+                    if (order.status!='canceled' && order.status!='closed' ){
+                        for (var j in order.kayak) {
+                            var busy = order.kayak[j];
+                            if (busy.id == kayak.id) {
+                                return false;
+                            }
                         }
                     }
+
                 }
                 return true;
             })
@@ -184,11 +187,18 @@
                     order.setWorkingStatus()
                 }
             });
-        }
+        };
         $scope.setCloseStatus = function (order) {
             alertify.confirm("Уверен ли ты работник, что клиент вернул тебе все и не спиздил ни грамма?", function (e) {
                 if (e) {
                     order.setClosedStatus()
+                }
+            });
+        };
+        $scope.setCanceledStatus = function (order) {
+            alertify.confirm("Отменить заказ?", function (e) {
+                if (e) {
+                    order.setCanceledStatus()
                 }
             });
         }
@@ -210,7 +220,6 @@
 
             var startMoment = moment(start).subtract(1, 'hour');
             var endMoment = moment(end).add(1, 'hour');
-            console.log($scope.env.orders)
             $scope.env.tasks = $scope.env.orders.filter(function (order) {
                 if (order.Begin.isBetween(startMoment, endMoment)) {
                     return true
@@ -221,7 +230,6 @@
 
                 return false;
             });
-            console.log($scope.env.tasks)
             //$scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
 
         };

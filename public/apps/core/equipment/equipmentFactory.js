@@ -4,9 +4,9 @@
 
     angular.module('core')
         .factory('equipmentFactory', equipmentFactory);
-    equipmentFactory.$inject = ['equipmentService', '$http', 'cacheService'];
+    equipmentFactory.$inject = ['equipmentService', '$http', 'cacheService','$templateCache'];
 
-    function equipmentFactory(equipmentService, $http, cacheService) {
+    function equipmentFactory(equipmentService, $http, cacheService, $templateCache) {
 
         return {
             getAll:getAll,
@@ -24,9 +24,15 @@
                         for( i in response ){
                             result.push( equipmentService(response[i]) );
                         }
+                        $templateCache.put('equipment_get_all', result);
+
                         cache.end( result );
                     }).error(function (data, code) {
-                        cache.end({success: false, error: data.error});
+                        if ( code==0 ){
+                            cache.end( $templateCache.get('equipment_get_all') );
+                        }else{
+                            cache.end({success: false, error: data});
+                        }
                     })
                 }, 'equipment_getAll', 1
             );

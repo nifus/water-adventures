@@ -38,10 +38,31 @@
                 )
             };
 
+            Object.setCanceledStatus = function(data){
+                Object.waiting = true;
+                return $http.put('/backend/scheduler/'+this.id+'/status',{status:'canceled'}).then(
+                    function(response){
+                        Object.waiting = false;
+                        Object.status = 'canceled';
+                        return response.data;
+                    }
+                )
+            };
+
 
             Object.updateNote = function(note){
                 Object.waiting = true;
                 return $http.put('/backend/scheduler/'+this.id+'/note',{note:note}).then(
+                    function(response){
+                        Object.waiting = false;
+                        return response.data;
+                    }
+                )
+            };
+
+            Object.update = function(data){
+                Object.waiting = true;
+                return $http.put('/backend/scheduler/'+this.id,data).then(
                     function(response){
                         Object.waiting = false;
                         return response.data;

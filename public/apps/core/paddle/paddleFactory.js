@@ -4,9 +4,9 @@
 
     angular.module('core')
         .factory('paddleFactory', paddleFactory);
-    paddleFactory.$inject = ['$http', 'cacheService'];
+    paddleFactory.$inject = ['$http', 'cacheService','$templateCache'];
 
-    function paddleFactory( $http, cacheService) {
+    function paddleFactory( $http, cacheService, $templateCache) {
 
         return {
             getAll:getAll
@@ -21,9 +21,14 @@
                         for( i in response ){
                             result.push( (response[i]) );
                         }
+                        $templateCache.put('paddle_get_all', result);
                         cache.end( result );
                     }).error(function (data, code) {
-                        cache.end({success: false, error: data.error});
+                        if ( code==0 ){
+                            cache.end( $templateCache.get('paddle_get_all') );
+                        }else{
+                            cache.end({success: false, error: data});
+                        }
                     })
                 }, 'paddle_getAll', 1
             );

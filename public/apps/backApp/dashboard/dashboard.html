@@ -96,6 +96,7 @@
                         <option value="new">Нужно отдать</option>
                         <option value="working">Нужно принять</option>
                         <option value="closed">Закрытые</option>
+                        <option value="canceled">Отмененные</option>
                     </select>
                 </div>
             </div>
@@ -129,7 +130,7 @@
                         <table class="table table-striped table-hover table-bordered">
                             <tbody>
                             <tr ng-repeat="order in env.busyKayaks">
-
+                                <td><a ui-sref="order-edit({id:order.id})">{{order.id}}</a></td>
                                 <td style="width: 130px">
                                     {{order.phone}}<br>
                                     {{order.name}}
@@ -164,6 +165,10 @@
                                     <button type="button" class="btn btn-primary" ng-show="order.status=='new'" ng-click="setWorkStatus(order)">Отдал</button>
                                     <button type="button" class="btn btn-success" ng-show="order.status=='working'" ng-click="setCloseStatus(order)">Принял</button>
                                     <span class="label label-success" ng-show="order.status=='closed'">Закрыт</span>
+                                    <span class="label label-danger" ng-show="order.status=='canceled'">Отменен</span>
+
+                                    <button type="button" class="btn label-danger" ng-show="order.status=='new'" ng-click="setCanceledStatus(order)">Отменен</button>
+
 
 
                                 </td>
