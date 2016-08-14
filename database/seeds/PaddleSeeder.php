@@ -15,13 +15,24 @@ class PaddleSeeder extends Seeder
         DB::table('paddle')->truncate();
 
         DB::table('paddle')->insert([
-            'title' => 'Дюраль 180 см',
-            'number' => 10,
+            'title' => 'Дюраль маленькие',
+            'number' => 2,
         ]);
         DB::table('paddle')->insert([
-            'title' => 'Дюраль 190 см',
-            'number' => 10,
+            'title' => 'Дюраль очень большое',
+            'number' => 1,
         ]);
-
+        DB::table('paddle')->insert([
+            'title' => 'Дюраль среднее',
+            'number' => 7,
+        ]);
+        DB::table('paddle')->insert([
+            'title' => 'Дюраль большие',
+            'number' => 6,
+        ]);
+        DB::table('paddle')->insert([
+            'title' => 'пластик',
+            'number' => 5,
+        ]);
     }
 }

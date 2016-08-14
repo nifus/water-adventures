@@ -15,21 +15,42 @@ class BagSeeder extends Seeder
         DB::table('bag')->truncate();
 
         DB::table('bag')->insert([
-            'title' => 'Герма черная 150',
+            'title' => 'Герма оранжевая маленькая',
             'number' => '1',
-            'desc' => 'сплав',
+            'desc' => 'триторн',
         ]);
 
         DB::table('bag')->insert([
-            'title' => 'Герма желтая 150',
+            'title' => 'Герма зеленая средняя',
+            'number' => '2',
+            'desc' => 'сплав, порвана',
+        ]);
+
+        DB::table('bag')->insert([
+            'title' => 'Герма синяя маленькая',
             'number' => '1',
             'desc' => 'тритон',
         ]);
 
         DB::table('bag')->insert([
-            'title' => 'Герма красная 120',
+            'title' => 'Герма синяя средняя',
+            'number' => '2',
+            'desc' => 'тритон',
+        ]);
+        DB::table('bag')->insert([
+            'title' => 'Герма красная большая',
+            'number' => '2',
+            'desc' => 'тритон',
+        ]);
+        DB::table('bag')->insert([
+            'title' => 'Герма желтая большая',
             'number' => '1',
-            'desc' => 'тритон. баул',
+            'desc' => 'тритон',
+        ]);
+        DB::table('bag')->insert([
+            'title' => 'Герма черная большая',
+            'number' => '2',
+            'desc' => 'сплав',
         ]);
 
         DB::table('bag')->insert([
@@ -38,5 +59,10 @@ class BagSeeder extends Seeder
             'desc' => 'акваграфика',
         ]);
 
+        DB::table('bag')->insert([
+            'title' => 'Герма зеленая большая',
+            'number' => '4',
+            'desc' => 'сплав',
+        ]);
     }
 }

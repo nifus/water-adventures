@@ -18,6 +18,7 @@ Route::group(['prefix' => 'backend'], function () {
     Route::put('scheduler/{id}/note', 'SchedulerController@updateNote');
     Route::put('scheduler/{id}', 'SchedulerController@update');
     Route::get('scheduler/{id}', 'SchedulerController@getById');
+    Route::post('scheduler/{id}', 'SchedulerController@store');
     Route::get('scheduler', 'SchedulerController@index');
 
     Route::get('bag', 'BagController@index');
