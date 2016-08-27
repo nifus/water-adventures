@@ -3,745 +3,156 @@
 <html ng-app="App">
 <head>
     <meta charset="utf-8">
-    <!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+
     <title>Прокат байдарок на озерах Вуокса и Ладога</title>
-    <!--
-    Sprint Template
-    http://www.templatemo.com/preview/templatemo_401_sprint
-    -->
-    <meta name="viewport" content="width=device-width">
 
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/templatemo_misc.css">
-    <link rel="stylesheet" href="css/templatemo_style.css">
-    <link rel="stylesheet" href="css/styles.css">
 
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
+    <style>
+        body {
+            font-family: 'Lucida Console', Monaco, monospace;
+
+        }
+
+        h3.header-image {
+
+            transition: top 2s;
+            cursor: pointer;
+            position: absolute;
+            top: 30%;
+            color: white;
+            font-size: 40px;
+            width: 100%
+
+        }
+
+        p.header-desc {
+            transition: opacity 2s;
+            cursor: pointer;
+            position: absolute;
+            top: 10%;
+            left: 2%;
+            color: white;
+            font-size: 22px;
+            opacity: 0;
+            text-align: left;
+            padding: 10px
+        }
+
+        #hdr_1{
+            transition: opacity 2s, top 2s;
+            top:0;opacity: 0;
+
+        }
+
+        #cont_1{
+            text-align: center; opacity: 0;
+            left:-1000px;
+            transition: opacity 2s, left 1s;
+        }
+
+    </style>
+    <script src="components/jquery/dist/jquery.min.js"></script>
 </head>
-<body>
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
-    improve your experience.</p>
-<![endif]-->
-<div id="front">
-    <div class="site-header" class="col-md-12">
-        <div>
-            <div class="row">
-                <div class="col-md-3 col-sm-8 col-xs-12">
-                    <div id="templatemo_logo">
+<body style="height:2000px">
 
-                    </div>
-                    <!-- /.logo -->
-                </div>
-                <!-- /.col-md-4 -->
-                <div class="col-md-9 col-sm-8 col-xs-12">
-                    <div class="main-menu">
-                        <ul>
-                            <li><a href="#front">Байдарки</a></li>
-                            <li><a href="#conditions">Условия</a></li>
-                            <li><a href="#order">Аренда</a></li>
-                            <!--<li><a href="/gallery.html">Галерея</a></li>
-                            <li><a href="#blog">Блог</a></li>-->
-                            <li><a href="#contact">Контакты</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.main-menu -->
-                </div>
-                <!-- /.col-md-8 -->
-                <!-- <div class="col-md-2" style="line-height: 13px;">
-                     <h3 style="color:#ffffff">
-                         +7 911 986 00 83 <br/>
-                         +7 921 846 64 69</h3>
-                 </div>-->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="responsive">
-                        <div class="main-menu">
-                            <ul>
-                                <li><a href="#front">Байдарки</a></li>
-                                <li><a href="#conditions">Условия</a></li>
-                                <li><a href="#order">Аренда</a></li>
-                                <li><a href="#contact">Контакты</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.container -->
-    </div>
-    <!-- /.site-header -->
+<div style="top:0;position: fixed;width:100%;height:963px;background-image: url(images/back.jpg);z-index:-1"></div>
+
+<div class="header" style="margin-left:20px;clear: both;width:100%">
+    <h1 style="width:40%;float:left;text-transform: uppercase;font-weight: bold">прокат байдарок на вуоксе и ладоге <br> Водные Походы по Лен области и Карелии</h1>
+
+
+    <h1 style="width:15%;float:left">
+        &nbsp;
+    </h1>
+
+    <h1 style="width:40%;float:left;text-align: right;text-transform: uppercase;color:#000000">
+        +7 921 846 64 69<br>
+        <a href="mailto:hi@water-adventures.ru" style="color:#000000">hi@water-adventures.ru</a><br>
+    </h1>
+
 </div>
-<!-- /#front -->
+
+<br style="clear: both">
+
+<div style="margin:50px;padding:20px;z-index:1">
+
+    <div class="row">
+        <div class="col-md-6" style="border-radius: 8px;" id="cont_1">
+            <img class="media-object" id="img_1" style="width: 100%;border-radius: 8px;box-shadow: 0 0 20px rgba(0,0,0,0.5);"
+                 src="https://pp.vk.me/c636817/v636817090/a3be/_M13B67sFOw.jpg" alt="...">
+
+            <h3 class="header-image" id="hdr_1" style="text-transform: uppercase">Прокат байдарок</h3>
+
+            <p class="header-desc" id="dsc_1">
+
+                Аренда современных каркасных и надувных байдарок на Вуоксе и Ладоге.
+                <br> <br>
+                Гибкая система скидок для постоянных клиентов и любителей долгих походов.
+
+                В будние дни почти даром.
+                <br> <br>
+                Доставка байдарок к месту Вашего старта в Ладожских шхерах, Онежском озере или Белом море.
+                <br>
+                <br>
+                Полный комплект дополнительного оборудования: пластиковые весла, новые спас-жилеты, юбки, гермомешки.
 
 
-<div class="site-slider" class="col-md-12">
-    <ul class="bxslider">
-        <li>
-            <img src="/images/slider/ladoga_yel.jpg" alt="slider image 1">
+            </p>
+            <button type="button" class="btn btn-success" style="position: absolute;top: 85%;right: 5%;padding: 10px;text-transform: uppercase;font-size: 20px;">Забронировать </button>
 
-            <div class="container" style="opacity: 0.8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="slider-caption">
-                            <h2>Байдарка "Ладога 2"</h2>
+        </div>
 
-                            <div style="padding:20px;padding-top:0px;">
-                                <table style="width: 100%" class="table">
-                                    <tr>
-                                        <td style="width: 50%"><strong>Вместимость</strong></td>
-                                        <td>2 чел</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Грузоподъемность</strong></td>
-                                        <td>300 кг</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Дневной километраж</strong></td>
-                                        <td>50 км</td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top"><strong>Применение</strong></td>
-                                        <td>Большие открытые водоемы <br/> с волнами и боковым ветром. </td>
-                                    </tr>
+        <div class="col-md-6" style="text-align: center;opacity: 0">
+            <img class="media-object" style="width: 100%"
+                 src="https://pp.vk.me/c633116/v633116090/34b4f/BCdZmhXab78.jpg" alt="...">
+
+            <h3 class="header-image">Организация байдарочных походов</h3>
+            <p class="header-desc">Прокат современных каркасных и надувных байдарок</p>
+        </div>
+    </div>
+</div>
 
 
-                                    <tr>
-                                        <td colspan="2" style="text-align: left">
-                                            <br/>
-                                            <a class="btn btn-success" href="#order" role="button">Взять в аренду</a>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td colspan="2" style="font-size: 12px">* Байдарку можно укомплектовать парусом
-                                            по желанию
-                                            заказчика
-                                        </td>
-                                    </tr>
-                                </table>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <img src="/images/slider/neva.jpg" alt="Байдарка нева">
-
-            <div class="container" style="opacity: 0.8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="slider-caption">
-                            <h2>Байдарка "Нева"</h2>
-
-                            <div style="padding:20px;padding-top:0px;">
-                                <table style="width: 100%" class="table">
-                                    <tr>
-                                        <td style="width: 50%"><strong>Вместимость</strong></td>
-                                        <td>3 чел</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Грузоподъемность</strong></td>
-                                        <td>380 кг</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Дневной километраж</strong></td>
-                                        <td>40 км</td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top"><strong>Применение</strong></td>
-                                        <td>Водоемы со спокойной водой</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td colspan="2" style="text-align: left">
-                                            <br/>
-                                            <a class="btn btn-success" href="#order" role="button">Взять в аренду</a>
-                                        </td>
-                                    </tr>
-
-
-                                </table>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <img src="images/slider/sail.jpg" alt="slider image 2">
-
-            <div class="container" style="opacity: 0.8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="slider-caption">
-                            <h2>Тримаран на базе байдарки "Ладога 2"</h2>
-
-                            <div style="padding:20px;padding-top:0px;">
-                                <table style="width: 100%" class="table">
-                                    <tr>
-                                        <td style="width: 50%"><strong>Вместимость</strong></td>
-                                        <td>2 чел</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Грузоподъемность</strong></td>
-                                        <td>300 кг</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Дневной километраж</strong></td>
-                                        <td>100 км</td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top"><strong>Применение</strong></td>
-                                        <td>Большие открытые водоемы <br/>
-                                            с сильным ветром
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td colspan="2">* Это байдарка Ладога 2 укомплектованная аутригерами для <br/>устойчивости,
-                                            парусным вооружением, швертами, гротом, стакселем
-                                            и усиленным рулем
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td colspan="2" style="text-align: left">
-                                            <br/>
-                                            <a class="btn btn-success" href="#order" role="button">Взять в аренду</a>
-                                        </td>
-                                    </tr>
-
-
-                                </table>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </li>
-
-        <li>
-            <img src="images/slider/viking.jpg" alt="slider image 2">
-
-            <div class="container" style="opacity: 0.8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="slider-caption">
-                            <h2>Байдарка "Викинг 4.7"</h2>
-
-                            <div style="padding:20px;padding-top:0px;">
-                                <table style="width: 100%" class="table">
-                                    <tr>
-                                        <td style="width: 50%"><strong>Вместимость</strong></td>
-                                        <td>2-3 чел</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Грузоподъемность</strong></td>
-                                        <td>270 кг</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Дневной километраж</strong></td>
-                                        <td>30 км</td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top"><strong>Применение</strong></td>
-                                        <td>Реки, озёра, пороги до 2кс</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td colspan="2" style="text-align: left">
-                                            <br/>
-                                            <a class="btn btn-success" href="#order" role="button">Взять в аренду</a>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td colspan="2" style="font-size: 12px">* Байдарку можно укомплектовать третьим
-                                            посадочным местом по желанию заказчика
-                                        </td>
-                                    </tr>
-                                </table>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-
+<div style="text-align: center">
+    <ul style="color: white">
+        <li style="float: left;padding-left:30px">О нас</li>
+        <li style="float: left;padding-left:30px">Карта проезда</li>
+        <li style="float: left;padding-left:30px">Путеводитель</li>
     </ul>
-    <!-- /.bxslider -->
-    <div class="bx-thumbnail-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="bx-pager">
-                        <a data-slide-index="0" href=""><img src="images/slider/ladoga_yel_p.jpg" alt="Ладога 2"/></a>
-                        <a data-slide-index="1" href=""><img src="images/slider/neva_p.jpg" alt="Нева 3"/></a>
-                        <a data-slide-index="2" href=""><img src="images/slider/sail_p.jpg"
-                                                             alt="Ладога с парусным вооружением"/></a>
-                        <a data-slide-index="3" href=""><img src="images/slider/viking_p.jpg" alt="Викинг 4.7"/></a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /.site-slider -->
-
-<div id="conditions" class="content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h3 class="section-title">Условия аренды байдарок на озерах Ладога и Вуокса</h3>
-            </div>
-            <!-- /.col-md-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-md-12 col-sm-12" style="font-size: 16px">
-                <h4>Комплектация</h4>
-
-                <p>Все байдарки полность укомплектованы для безопасного использования и готовы для эксплуатации в акватории озера Вуокса.
-                    Вместе с байдаркой вы получаете:</p>
-                <ul>
-                    <li>рем-набор для устранения повреждений шкуры байдарки</li>
-                    <li>спасательные жилетаты по количеству мест в байдарке</li>
-                    <li>дюралевые разборные вёсла</li>
-                    <li>гермо-мешки для личных вещей. По одному на каждое место в байдарке </li>
-                    <li>юбки и фартук. По одной на каждое место в байдарке</li>
-                </ul>
-                <br/>
-
-
-                <p>По желанию арендатора за дополнительную плату можно комплектовать байдарку:</p>
-                <ul>
-                    <li>полиэтиленовыми веслами</li>
-                    <li>парусном вооружением (только для моделей Ладога)</li>
-                    <li>экшен камерой Sony HDR as100v</li>
-                    <li>рациями</li>
-                    <li>gPS навигатором с картам Ленинградской области и Республики Карелия</li>
-                    <li>дополнительными гермо-мешками</li>
-                </ul>
-
-                <h4>Сдача и возврат байдарки</h4>
-
-                <p>Байдарка сдаётся в аренду уже в собранном виде, полностью готовая к эксплуатации.
-                    Байдарка чистая, без критических повреждений ухудшающих её работоспособность. </p>
-
-                <p>Имеющиеся на байдарке повреждения отражаются в специально приложении к договору и демонстрируются
-                    арендатору перед подписанием бумаг.</p>
-
-                <p>Байдарка возврщает обратно в чистом и собранном виде.</p>
-
-                <p>Повреждения, нанесенные во время экспуатации байдарки оплачиваются из залоговой суммы. </p>
-
-
-                <h4>Договор</h4>
-
-                <p>На все взятое в аренду оборудование заключается договор.</p>
-
-                <p>За каждую байдарку взымается залог в 4 000 рублей. При возврате байдарки, залог возвращается.</p>
-
-
-            </div>
-            <!-- /.col-md-3 -->
-
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</div>
-<!-- /#products -->
-
-<div id="order" class="content-section" ng-controller="CalcController" ng-view>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h3 class="section-title">Аренда байдарок</h3>
-            </div>
-            <div  class="col-md-12">
-                Извините. Раздел находится в разработке. Забронировать байдарку можно по телефону
-                +7 911 986 00 83 мтс
-                +7 921 846 64 69 мегафон
-                <!--Здесь вы можете рассчитать стоимость аренды нашего оборудования и сделать заказ.-->
-            </div>
-
-        </div>
-        <!--
-        <div class="row">
-            <h4 style="margin-bottom: 15px;margin-left: 15px">Шаг 1. Выберите, на какие числа вам нужны байдарки:
-                <br/>
-                <small style="font-size: 12px">Выберите в календарях даты и время начала и конца аренды байдарок и
-                    оборудования.
-                </small>
-            </h4>
-
-            <div style="margin-bottom: 40px">
-                <div class="col-md-4">
-                    <strong>Начало аренды</strong> {{ calc.getBeginDate() }}
-                </div>
-                <div class="col-md-6">
-                    <strong>Конец аренды</strong> {{ calc.getEndDate() }}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <angular-picker
-                        ng-model="env.model.date.begin.value"
-                        on-show="env.model.date.begin.onShow"
-                        lang="ru"
-                        format="YYYY.MM.DD HH:mm"
-                        ></angular-picker>
-            </div>
-            <div class="col-md-4">
-
-                <angular-picker
-                        ng-model="env.model.date.end.value"
-                        on-show="env.model.date.end.onShow"
-                        lang="ru"
-                        format="YYYY.MM.DD HH:mm"
-                        default-time="21:00"
-                        ></angular-picker>
-            </div>
-
-        </div>
-
-        <div class="row">
-            <h4 style="margin-bottom: 5px;margin-left: 15px">Шаг 2. В наличии на выбранные числа есть:</h4>
-
-            <div class="col-xs-6 col-md-4" ng-repeat="canoe in env.canoeService.canoes">
-                <div class="thumbnail">
-                    <img ng-src="{{ canoe.get('photo')._url }}" alt="...">
-
-                    <div class="caption">
-                        <h3 style="top:80px;position: absolute;color:#ffffff;font-weight: bold">{{ canoe.get('title')
-                            }}</h3>
-
-                        <p>
-                            {{ canoe.get('desc') }}
-                        </p>
-
-                        <div class="row">
-                            <div class="col-md-5">
-                                <button type="button" class="btn btn-primary" style="width: 150px"
-                                        ng-click="calc.selectCanoe(canoe)">Узнать о байдарке
-                                </button>
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="text-align: right">
-                                <button type="button" class="btn btn-success" style="width: 150px"
-                                        ng-show="false==calc.isSelectCanoe(canoe)"
-                                        ng-click="calc.selectCanoe(canoe)">Взять
-                                </button>
-
-                                <button type="button" class="btn btn-danger" style="width: 150px"
-                                        ng-show="true==calc.isSelectCanoe(canoe)"
-                                        ng-click="calc.unSelectCanoe(canoe)"
-                                        >Отказаться
-                                </button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-            <h4 style="margin-bottom: 5px;margin-left: 15px">Шаг 3. Дополнительно можно взять</h4>
-            <div ng-repeat="equipment in env.equipmentService.equipments" class="col-xs-6 col-md-4"
-                 ng-class="{ 'disabled' : calc.selected.canoes.length==0 }">
-                <div class="thumbnail">
-                    <img ng-src="{{ equipment.get('photo')._url }}" alt="..." style="width: 350px;height:250px">
-
-                    <div class="caption">
-                        <h3 style="top:80px;position: absolute;color:#ffffff;font-weight: bold">{{ equipment.get('title') }}</h3>
-                        <p>{{ equipment.get('desc') }}</p>
-
-                        <div class="row">
-                            <div class="col-md-5">
-                                <input type="number" class="form-control" value="1"/>
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="text-align: right">
-                                <button type="button" class="btn btn-success" style="width: 150px"
-                                        ng-show="false==calc.isSelectEquipment(equipment)"
-                                        ng-click="calc.selectEquipment(equipment)">Взять
-                                </button>
-
-                                <button type="button" class="btn btn-danger" style="width: 150px"
-                                        ng-show="true==calc.isSelectEquipment(equipment)"
-                                        ng-click="calc.unSelectEquipment(equipment)"
-                                        >Отказаться
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <h4 style="margin-bottom: 15px;margin-left: 15px">Шаг 4. Доставка байдарок и снаряжения
-                <br/>
-                <small style="font-size: 12px">Выберите из списка место, где вам удобнее получать байдарки и
-                    снаряжение
-                </small>
-            </h4>
-
-            <div class="col-xs-6 col-md-6 form-inline" ng-class="{ 'disabled' : calc.selected.canoes.length==0}">
-                <select class="form-control">
-                    <option value="">г. Приозерск, озеро Вуокса, район ЖД станции</option>
-                    <option value="">г. Приозерск, озеро Ладога, район Бумоского моста</option>
-                    <option value="">п. Кузнечное, озеро Ладога</option>
-                    <option value="">п. Березово, озеро Ладога</option>
-                </select>
-
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> смотреть на карте
-                </button>
-            </div>
-        </div>
-
-        <div class="row" >
-            <h4 style="margin-bottom: 15px;margin-left: 15px">Шаг 5. Сдача байдарок и снаряжения <br/>
-                <small style="font-size: 12px">Выберите из списка место, где вам удобнее сдавать байдарки и снаряжение
-                </small>
-            </h4>
-
-            <div class="col-xs-6 col-md-6 form-inline" ng-class="{ 'disabled' : calc.selected.canoes.length==0 }">
-                <select class="form-control">
-                    <option value="">г. Приозерск, озеро Вуокса, район ЖД станции</option>
-                    <option value="">г. Приозерск, озеро Ладога, район Бумоского моста</option>
-                    <option value="">п. Кузнечное, озеро Ладога</option>
-                    <option value="">п. Березово, озеро Ладога</option>
-                </select>
-
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> смотреть на карте
-                </button>
-            </div>
-        </div>
-
-        <div class="row" >
-            <h4 style="margin-bottom: 15px;margin-left: 15px">Шаг 6. Цена
-                <br/>
-                <small style="font-size: 12px">Общая цена за аренду выбранного оборудования включая скидки</small>
-            </h4>
-
-            <div class="col-xs-6 col-md-6" ng-class="{ 'disabled' : calc.selected.canoes.length==0 }">
-
-                <table class="table">
-                    <tr>
-                        <td>Наименование</td>
-                        <td>Количество</td>
-                        <td>Цена</td>
-                    </tr>
-                    <tr ng-repeat="row in calc.detail">
-                        <td>{{ row.title }}</td>
-                        <td>{{ row.count }}</td>
-                        <td>{{ row.price }}</td>
-                    </tr>
-
-                    <tr>
-                        <td>Итого</td>
-                        <td colspan="3" style="text-align: right">{{ calc.price }} Рублей</td>
-                    </tr>
-
-                </table>
-
-            </div>
-
-        </div>
-
-
-
-
-        <div class="row"  >
-            <h4 style="margin-bottom: 15px;margin-left: 15px">Шаг 7. Контактные данные
-                <br/>
-                <small style="font-size: 12px"></small>
-            </h4>
-
-            <div class="col-xs-6 col-md-6" ng-class="{ 'disabled' : calc.selected.canoes.length==0 }">
-
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" class="form-control" ng-model="" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label>* Телефон</label>
-                    <input type="email" class="form-control" ng-model="" placeholder="+7 (000) 000-00-00">
-                </div>
-
-                <div class="form-group">
-                    <label>Имя</label>
-                    <input type="email" class="form-control" ng-model="" placeholder="Иванов Иван Иванович">
-                </div>
-
-                <div class="form-group">
-                    <label>Комментарий</label>
-                    <textarea class="form-control" ng-model="" placeholder="Если у вас остались вопросы, задавайте"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <button type="button" class="btn btn-success" ng-disabled="">Готово!</button>
-                </div>
-            </div>
-        </div>
-
--->
-
-
-    </div>
-    <!-- /.container -->
-</div>
-<!-- /#services -->
-
-
-<div id="contact" class="content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="section-title">Контакты</h1>
-            </div>
-            <!-- /.col-md-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-md-6">
-                <h4>Телефоны</h4>
-                <ul>
-                    <li>+7 911 986 00 83 мтс</li>
-                    <li>+7 921 846 64 69 мегафон</li>
-                </ul>
-
-                <h4>E-mail</h4>
-                <ul>
-                    <li><a href="mailto:hi@water-adventures.ru">hi@water-adventures.ru</a></li>
-                </ul>
-
-                <h4>Адрес</h4>
-                <p>Ленинградская область, город Приозерск, лодочная станция Розовый рассвет</p>
-
-
-                <h4>Как добраться:</h4>
-                <ul>
-                    <li>На машине от Санкт-Петербурга по Приозерскому шоссе до города Приозерск.
-                        После въезда в город на первом светофоре поворот налево и до конца улицы под жд мост.</li>
-                    <li>На электричке до станции "Приозерск". <a href="https://rasp.yandex.ru/search/suburban/?fromName=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3+%28%D0%A4%D0%B8%D0%BD%D0%BB%D1%8F%D0%BD%D0%B4%D1%81%D0%BA%D0%B8%D0%B9+%D0%B2%D0%BE%D0%BA%D0%B7%D0%B0%D0%BB%29&fromId=&toName=%D0%9F%D1%80%D0%B8%D0%BE%D0%B7%D0%B5%D1%80%D1%81%D0%BA&toId=&when=%D0%BD%D0%B0+%D0%B2%D1%81%D0%B5+%D0%B4%D0%BD%D0%B8" target="_blank">Рассписание электричек</a></li>
-                </ul>
-            </div>
-            <div class="col-md-6"><iframe width="500px" height="400px" src="http://openstreetmap.ru/frame.php?mapid=1544524447"></iframe></div>
-
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
-</div>
-<!-- /#products -->
-
-<div class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                    <span>
-                    	Copyright &copy; 2015 <a href="/">Водные приключения</a>
-                    </span>
-
-            </div>
-            <!-- /.col-md-6 -->
-            <div class="col-md-6 col-sm-6">
-                <ul class="social">
-                    <li><a href="https://vk.com/water_adventures" class="fa fa-facebook"></a></li>
-                    <li><a href="https://instagram.com/prokatbaydarok/" class="fa fa-instagram"></a></li>
-                </ul>
-            </div>
-            <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
 </div>
 
-<!-- Yandex.Metrika informer -->
-<a href="https://metrika.yandex.ru/stat/?id=30855831&amp;from=informer"
-   target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/30855831/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-                                       style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:30855831,lang:'ru'});return false}catch(e){}" /></a>
-<!-- /Yandex.Metrika informer -->
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter30855831 = new Ya.Metrika({
-                    id:30855831,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true
-                });
-            } catch(e) { }
-        });
+<script>
+    $(function () {
 
-        var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
+        $('#cont_1').animate({
+            'opacity':'1',
+            'left':'0px'
+        },1000, function(){
+            $('#hdr_1').css('top', '30%');
+            $('#hdr_1').css('opacity', '1');
+        })
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
+
+
+        $('#cont_1 >*').mouseenter(function () {
+            $('#hdr_1').css('top', '0');
+            $('#dsc_1').css('opacity', '1');
+        })
+
+        $('#cont_1').mouseout(function () {
+            $('#hdr_1').css('top', '30%');
+            $('#dsc_1').css('opacity', '0');
+
+        })
+    })
+
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/30855831" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-<script src="js/vendor/jquery-1.10.1.min.js"></script>
-<script src="js/jquery.easing-1.3.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
-
-<script src="components/angular/angular.min.js"></script>
-<script src="components/moment/min/moment.min.js"></script>
-<script src="components/moment/locale/ru.js"></script>
-
-<script src="components/datetimepicker/jquery.datetimepicker.js"></script>
-<link rel="stylesheet" href="components/datetimepicker/jquery.datetimepicker.css"/>
-
-<script src="app/app.js"></script>
-<script src="app/calc/calcController.js"></script>
-<script src="app/calc/calcService.js"></script>
-<script src="app/calc/canoeService.js"></script>
-<script src="app/calc/equipmentService.js"></script>
-<script src="app/calc/angular-picker/module.js"></script>
-<script src="app/calc/angular-picker/directive.dateTimePicker.js"></script>
-
 </body>
 </html>
