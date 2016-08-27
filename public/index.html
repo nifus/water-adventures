@@ -38,43 +38,66 @@
             top: 10%;
             left: 2%;
             color: white;
-            font-size: 22px;
+            font-size: 1.5em;
             opacity: 0;
             text-align: left;
             padding: 10px
         }
 
         #hdr_1{
+            transition: opacity 2s, top 1s;
+            top:0;opacity: 0;
+        }
+        #hdr_2{
             transition: opacity 2s, top 2s;
             top:0;opacity: 0;
-
+        }
+        #btn_1{
+            transition: opacity 2s;
+            opacity: 0;
+            position: absolute;top: 85%;right: 5%;padding: 10px;text-transform: uppercase;font-size: 20px;
         }
 
         #cont_1{
             text-align: center; opacity: 0;
             left:-1000px;
-            transition: opacity 2s, left 1s;
+            transition: opacity 2s, left 3s;
+        }
+        #cont_2{
+            text-align: center; opacity: 0;
+            right:-1000px;
+            transition: opacity 2s, left 3s;
+        }
+        @media screen and (max-width: 1024px) {
+            h3.header-image {
+                font-size: 20px;
+            }
+            p.header-desc {
+
+                font-size: 0.8em;
+
+            }
         }
 
     </style>
     <script src="components/jquery/dist/jquery.min.js"></script>
 </head>
-<body style="height:2000px">
+<body style="height:2000px;overflow: hidden">
 
 <div style="top:0;position: fixed;width:100%;height:963px;background-image: url(images/back.jpg);z-index:-1"></div>
 
-<div class="header" style="margin-left:20px;clear: both;width:100%">
+<div class="header" style="clear: both;width:100%">
 
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding-left:20px;">
             <h1 style="text-transform: uppercase;font-weight: bold">прокат байдарок на вуоксе и ладоге <br> Водные Походы по Лен области и Карелии</h1>
 
 
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4" style="padding-right:20px">
 
             <h1 style="text-align: right;text-transform: uppercase;color:#000000">
                 +7 921 846 64 69<br>
-                <a href="mailto:hi@water-adventures.ru" style="color:#000000">hi@water-adventures.ru</a><br>
+                <a href="mailto:hi@water-adventures.ru" style="color:#000000;text-decoration: underline">hi@water-adventures.ru</a><br>
             </h1>
         </div>
 
@@ -108,29 +131,43 @@
                 <br>
                 <br>
                 Полный комплект дополнительного оборудования: пластиковые весла, новые спас-жилеты, юбки, гермомешки.
-
-
             </p>
-            <button type="button" class="btn btn-success" style="position: absolute;top: 85%;right: 5%;padding: 10px;text-transform: uppercase;font-size: 20px;">Забронировать </button>
+            <button type="button" id="btn_1" class="btn btn-success" >Забронировать </button>
 
         </div>
 
-        <div class="col-md-6" style="text-align: center;opacity: 0">
-            <img class="media-object" style="width: 100%"
-                 src="https://pp.vk.me/c633116/v633116090/34b4f/BCdZmhXab78.jpg" alt="...">
+        <div class="col-md-6" style="border-radius: 8px;" id="cont_2">
+            <img class="media-object" id="img_2" style="width: 100%;border-radius: 8px;box-shadow: 0 0 20px rgba(0,0,0,0.5);"
+                 src="https://pp.vk.me/c636817/v636817090/a3be/_M13B67sFOw.jpg" alt="...">
 
-            <h3 class="header-image">Организация байдарочных походов</h3>
-            <p class="header-desc">Прокат современных каркасных и надувных байдарок</p>
+            <h3 class="header-image" id="hdr_2" style="text-transform: uppercase">Водные походы</h3>
+
+            <p class="header-desc" id="dsc_2">
+
+                Аренда современных каркасных и надувных байдарок на Вуоксе и Ладоге.
+                <br> <br>
+                Гибкая система скидок для постоянных клиентов и любителей долгих походов.
+
+                В будние дни почти даром.
+                <br> <br>
+                Доставка байдарок к месту Вашего старта в Ладожских шхерах, Онежском озере или Белом море.
+                <br>
+                <br>
+                Полный комплект дополнительного оборудования: пластиковые весла, новые спас-жилеты, юбки, гермомешки.
+            </p>
+            <button type="button" class="btn btn-success" style="position: absolute;top: 85%;right: 5%;padding: 10px;text-transform: uppercase;font-size: 20px;">Забронировать </button>
+
         </div>
     </div>
 </div>
 
 
-<div style="text-align: center">
-    <ul style="color: white">
-        <li style="float: left;padding-left:30px">О нас</li>
-        <li style="float: left;padding-left:30px">Карта проезда</li>
-        <li style="float: left;padding-left:30px">Путеводитель</li>
+<div style="text-align: center;  margin: auto;">
+    <ul style="color: white;list-style-type: none;  margin: auto;width:700px">
+        <li style="float: left;padding-left:60px"><a href="" style="color:white;text-decoration: underline;text-transform: uppercase">О нас</a></li>
+        <li style="float: left;padding-left:60px">Карта проезда</li>
+        <li style="float: left;padding-left:60px">Путеводитель</li>
+        <li style="float: left;padding-left:60px">Галлерея</li>
     </ul>
 </div>
 
@@ -144,18 +181,29 @@
         },1000, function(){
             $('#hdr_1').css('top', '30%');
             $('#hdr_1').css('opacity', '1');
-        })
+        });
 
+        $('#cont_2').animate({
+            'opacity':'1',
+            'left':'0px'
+        },1000, function(){
+            $('#hdr_2').css('top', '30%');
+            $('#hdr_2').css('opacity', '1');
+        });
 
 
         $('#cont_1 >*').mouseenter(function () {
             $('#hdr_1').css('top', '0');
             $('#dsc_1').css('opacity', '1');
+            $('#btn_1').css('opacity', '1');
+
         })
 
         $('#cont_1').mouseout(function () {
             $('#hdr_1').css('top', '30%');
             $('#dsc_1').css('opacity', '0');
+            $('#btn_1').css('opacity', '0');
+
 
         })
     })
