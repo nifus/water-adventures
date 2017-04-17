@@ -1,0 +1,266 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Lucida Console', Monaco, monospace;
+    overflow: hidden;
+    height: 100%;
+}
+
+a.link {
+    cursor: pointer;
+}
+
+#background {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url(/images/back.jpg);
+    z-index: -1
+}
+
+#header {
+    clear: both;
+    width: 100%;
+    height: 10%;
+}
+
+#header div.left {
+    padding-left: 20px;
+}
+
+#header div.right {
+    padding-right: 20px
+}
+
+#header h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#header div.right h1 {
+    text-align: right;
+}
+
+#header a {
+    color: #333333;
+    text-decoration: underline
+}
+
+#content {
+    height: 80%;
+    padding: 20px;
+    z-index: 1
+}
+
+#footer {
+    height: 10%;
+    text-align: center;
+    margin: auto;
+}
+
+#footer ul.dark a {
+    color: #000000;
+}
+
+#footer ul {
+    color: white;
+    list-style-type: none;
+    margin: auto;
+    width: 50%;
+    height: inherit;
+}
+
+#footer li {
+    float: left;
+    padding-left: 60px
+}
+
+#footer a {
+    color: white;
+    text-decoration: underline;
+    text-transform: uppercase
+}
+
+@media (max-width: 1300px) {
+    #footer ul {
+        width: 50%;
+    }
+    #header h1 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 1000px) {
+    #footer ul {
+        width: 70%;
+    }
+    #header h1 {
+        font-size: 1.7em;
+    }
+}
+
+@media (max-width: 800px) {
+    #footer ul {
+        width: 80%;
+    }
+
+    #header h1 {
+        font-size: 1.6em;
+    }
+}
+@media (max-width: 500px) {
+    #footer ul {
+        width: 80%;
+    }
+
+    #header h1 {
+        font-size: 1.6em;
+    }
+}
+
+/*  INTRO */
+
+#intro {
+    transition: opacity 1s;
+
+}
+
+#intro div {
+    border-radius: 8px;
+}
+
+#intro img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#intro h3 {
+    text-transform: uppercase;
+    transition: top 2s;
+    cursor: pointer;
+    position: absolute;
+    top: 30%;
+    color: white;
+    font-size: 40px;
+    width: 100%;
+
+}
+
+#intro p {
+    transition: opacity 2s;
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    color: white;
+    font-size: 1.5em;
+    opacity: 0;
+    text-align: left;
+    padding: 10px;
+}
+
+#intro button {
+    position: absolute;
+    top: 85%;
+    right: 5%;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+#intro div.left {
+    text-align: center;
+    opacity: 0;
+    left: -1000px;
+    transition: opacity 2s, left 3s;
+}
+
+#intro div.right {
+    text-align: center;
+    opacity: 0;
+    right: -1000px;
+    transition: opacity 2s, left 3s;
+}
+
+#gallery {
+    display: none
+}
+
+#gallery div.left {
+    background-size: cover;
+    position: absolute;
+    width: 190px;
+    top: 30%;
+    height: 300px;
+    left: 10px;
+    background-image: url(/images/arrow_left_grey.png);
+    opacity: 0.4;
+    cursor: pointer;
+    transition: opacity 2s;
+
+}
+
+#gallery div.right {
+    background-size: cover;
+    position: absolute;
+    width: 190px;
+    top: 30%;
+    height: 300px;
+    right: 10px;
+    background-image: url(/images/left-arrow-right-hi.png);
+    opacity: 0.4;
+    cursor: pointer;
+    transition: opacity 2s;
+
+}
+
+#gallery div.text {
+    background-size: cover;
+    position: absolute;
+    width: 50%;
+    top: 30%;
+    height: 100px;
+    left: 30%;
+    font-weight: bold;
+    font-size: 40px;;
+    opacity: 0.6;
+    color: #FFFFFF
+}
+
+#about {
+    display: none
+}
+
+#about div.text {
+    background-size: cover;
+    position: absolute;
+    width: 80%;
+    top: 30%;
+    height: 100px;
+    left: 10%;
+    font-weight: bold;
+    font-size: 20px;;
+    opacity: 0.8;
+    color: #FFFFFF
+}
+
+/*
+
+
+
+
+@media screen and (max-width: 1024px) {
+    h3.header-image {
+        font-size: 20px;
+    }
+    p.header-desc {
+        font-size: 0.8em;
+    }
+}*/

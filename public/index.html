@@ -11,116 +11,42 @@
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style.css">
 
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: 'Lucida Console', Monaco, monospace;
 
-        }
-
-        h3.header-image {
-
-            transition: top 2s;
-            cursor: pointer;
-            position: absolute;
-            top: 30%;
-            color: white;
-            font-size: 40px;
-            width: 100%
-
-        }
-
-        p.header-desc {
-            transition: opacity 2s;
-            cursor: pointer;
-            position: absolute;
-            top: 10%;
-            left: 2%;
-            color: white;
-            font-size: 1.5em;
-            opacity: 0;
-            text-align: left;
-            padding: 10px
-        }
-
-        #hdr_1{
-            transition: opacity 2s, top 1s;
-            top:0;opacity: 0;
-        }
-        #hdr_2{
-            transition: opacity 2s, top 2s;
-            top:0;opacity: 0;
-        }
-        #btn_1{
-            transition: opacity 2s;
-            opacity: 0;
-            position: absolute;top: 85%;right: 5%;padding: 10px;text-transform: uppercase;font-size: 20px;
-        }
-
-        #cont_1{
-            text-align: center; opacity: 0;
-            left:-1000px;
-            transition: opacity 2s, left 3s;
-        }
-        #cont_2{
-            text-align: center; opacity: 0;
-            right:-1000px;
-            transition: opacity 2s, left 3s;
-        }
-        @media screen and (max-width: 1024px) {
-            h3.header-image {
-                font-size: 20px;
-            }
-            p.header-desc {
-
-                font-size: 0.8em;
-
-            }
-        }
 
     </style>
     <script src="components/jquery/dist/jquery.min.js"></script>
 </head>
-<body style="height:2000px;overflow: hidden">
+<body>
 
-<div style="top:0;position: fixed;width:100%;height:963px;background-image: url(images/back.jpg);z-index:-1"></div>
-
-<div class="header" style="clear: both;width:100%">
-
-        <div class="col-md-8" style="padding-left:20px;">
-            <h1 style="text-transform: uppercase;font-weight: bold">прокат байдарок на вуоксе и ладоге <br> Водные Походы по Лен области и Карелии</h1>
-
-
-        </div>
-        <div class="col-md-4" style="padding-right:20px">
-
-            <h1 style="text-align: right;text-transform: uppercase;color:#000000">
-                +7 921 846 64 69<br>
-                <a href="mailto:hi@water-adventures.ru" style="color:#000000;text-decoration: underline">hi@water-adventures.ru</a><br>
-            </h1>
-        </div>
-
-
-
-
-
-
+<div id="background">
+    <iframe  style="width:100%;height:100%;visibility: hidden" src="http://openstreetmap.ru/frame.php?mapid=1544524447"></iframe>
 </div>
 
-<br style="clear: both">
+<div id="header">
+    <div class="col-md-8 left">
+        <h1>Прокат байдарок на вуоксе и ладоге <br> Водные Походы по Лен области и Карелии</h1>
+    </div>
+    <div class="col-md-4 right">
+        <h1>
+            +7 921 846 64 69<br>
+            <a href="mailto:hi@water-adventures.ru">hi@water-adventures.ru</a><br>
+        </h1>
+    </div>
+</div>
 
-<div style="margin:50px;padding:20px;z-index:1">
 
-    <div class="row">
-        <div class="col-md-6" style="border-radius: 8px;" id="cont_1">
-            <img class="media-object" id="img_1" style="width: 100%;border-radius: 8px;box-shadow: 0 0 20px rgba(0,0,0,0.5);"
-                 src="https://pp.vk.me/c636817/v636817090/a3be/_M13B67sFOw.jpg" alt="...">
 
-            <h3 class="header-image" id="hdr_1" style="text-transform: uppercase">Прокат байдарок</h3>
+<div id="content" >
+    <div class="row" id="intro">
+        <div class="col-md-6 left">
+            <img src="https://pp.vk.me/c636817/v636817090/a3be/_M13B67sFOw.jpg" alt="...">
 
-            <p class="header-desc" id="dsc_1">
-
+            <h3>Прокат байдарок</h3>
+            <p>
                 Аренда современных каркасных и надувных байдарок на Вуоксе и Ладоге.
                 <br> <br>
                 Гибкая система скидок для постоянных клиентов и любителей долгих походов.
@@ -132,19 +58,16 @@
                 <br>
                 Полный комплект дополнительного оборудования: пластиковые весла, новые спас-жилеты, юбки, гермомешки.
             </p>
-            <button type="button" id="btn_1" class="btn btn-success" >Забронировать </button>
-
+            <button type="button"  class="btn btn-success">Забронировать</button>
         </div>
 
-        <div class="col-md-6" style="border-radius: 8px;" id="cont_2">
-            <img class="media-object" id="img_2" style="width: 100%;border-radius: 8px;box-shadow: 0 0 20px rgba(0,0,0,0.5);"
-                 src="https://pp.vk.me/c636817/v636817090/a3be/_M13B67sFOw.jpg" alt="...">
+        <div class="col-md-6 right" >
+            <img src="https://pp.vk.me/c636817/v636817090/a3be/_M13B67sFOw.jpg" alt="...">
 
-            <h3 class="header-image" id="hdr_2" style="text-transform: uppercase">Водные походы</h3>
+            <h3>Аренда оборудования</h3>
 
-            <p class="header-desc" id="dsc_2">
-
-                Аренда современных каркасных и надувных байдарок на Вуоксе и Ладоге.
+            <p>
+                С байдаркой Вы можете взять в аренду палатки, спальники, гамаки
                 <br> <br>
                 Гибкая система скидок для постоянных клиентов и любителей долгих походов.
 
@@ -155,19 +78,62 @@
                 <br>
                 Полный комплект дополнительного оборудования: пластиковые весла, новые спас-жилеты, юбки, гермомешки.
             </p>
-            <button type="button" class="btn btn-success" style="position: absolute;top: 85%;right: 5%;padding: 10px;text-transform: uppercase;font-size: 20px;">Забронировать </button>
+            <button type="button" class="btn btn-success"
+                    style="">
+                Забронировать
+            </button>
+
+        </div>
+    </div>
+
+    <div id="gallery" >
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="text">
+            Июнь на ладожских шхерах. Со всех сторон проливаются доджи из грозовых туч.
+        </div>
+    </div>
+
+    <div id="about" >
+        <div class="text">
+            Прием! <br>
+            на связи прокат байдарок и тур стафа  "Водные приключения" <br><br>
+
+            меня зовут Александр. Байдарить я начал ещё в те времена, когда были только таймени, а магическое слово rz-ка вызывало зависть и уважение.
+            <br>
+
+            мой прокат для людей которым нравятся байдарки и походы. к вашим услугам современные каркасные и надувные байдарки Ладога 2, Нева 3, Викинг 4.7<br>
+            
+
+            Здесь вам не тут.
+            Увлечени превалирует над бизнесом, поэтому буду рад видеть единомышленников. <br>
+
+
+            Прокат расположен на берегу озера Вуокса в городе Приозерск, Ленинградской области <br>
+            Если вас интересует Ладожское озеро, то я бесплатно <br>
+            могу доставить вам байдарки в Кузнечное или Березово.<br>
+
+            У нас гибкое ценообразование. Мы рады постоянным клиентам и любителям длительных походов.
+            Вас ожидают скидки в будние дни, при заказе 4-х дней или если вы успели стать постоянным клиентом.
+
+            Вместа с байдарками мы всегда даем весла, спасжилеты, гермомешки и юбки. Никаких доплат. <br>
+
+
 
         </div>
     </div>
 </div>
 
 
-<div style="text-align: center;  margin: auto;">
-    <ul style="color: white;list-style-type: none;  margin: auto;width:700px">
-        <li style="float: left;padding-left:60px"><a href="" style="color:white;text-decoration: underline;text-transform: uppercase">О нас</a></li>
-        <li style="float: left;padding-left:60px">Карта проезда</li>
-        <li style="float: left;padding-left:60px">Путеводитель</li>
-        <li style="float: left;padding-left:60px">Галлерея</li>
+
+
+<div id="footer" >
+    <ul>
+        <li><a class="link" id="main_link" >Главная</a></li>
+        <li><a class="link" id="about_link" >О нас</a></li>
+        <li><a class="link" id="map_link" >Карта проезда</a></li>
+        <li><a href="" >Путеводитель</a></li>
+        <li><a class="link" id="gallery_link">Галлерея</a></li>
     </ul>
 </div>
 
@@ -175,38 +141,145 @@
 <script>
     $(function () {
 
-        $('#cont_1').animate({
+        var cursor = 0;
+        var images = [
+            {"src":'images/back.jpg',"title":"Июнь на ладожских шхерах. Со всех сторон проливаются дожди из грозовых туч."},
+            {"src":'https://pp.vk.me/c630923/v630923730/4f753/CN1ASwOaT5k.jpg',"title":"Вуокса"},
+            {"src":'https://pp.vk.me/c604426/v604426090/2723e/LCIhgZQxaSU.jpg',"title":"Июнь на ладожских шхерах. Со всех сторон проливаются доджи из грозовых туч."},
+            {"src":'https://pp.vk.me/c604426/v604426090/27234/J17i2Y4v0Qk.jpg',"title":"Июнь на ладожских шхерах. Со всех сторон проливаются доджи из грозовых туч."},
+        ];
+
+
+         $('#intro div.left').animate({
             'opacity':'1',
             'left':'0px'
-        },1000, function(){
-            $('#hdr_1').css('top', '30%');
-            $('#hdr_1').css('opacity', '1');
-        });
+         },1000, function(){
+            $('#intro div.left h3').css('top', '30%').css('opacity', '1');
+         });
 
-        $('#cont_2').animate({
+         $('#intro div.right').animate({
             'opacity':'1',
             'left':'0px'
-        },1000, function(){
-            $('#hdr_2').css('top', '30%');
-            $('#hdr_2').css('opacity', '1');
+         },1000, function(){
+            $('#intro div.right h3').css('top', '30%').css('opacity', '1');
+         });
+
+
+        $('#intro div.left >*').mouseenter(function () {
+            $('#intro div.left h3').css('top', '0');
+            $('#intro div.left p').css('opacity', '1');
+            $('#intro div.left button').css('opacity', '1');
+        });
+
+        $('#intro div.left').mouseout(function () {
+            $('#intro div.left h3').css('top', '30%');
+            $('#intro div.left p').css('opacity', '0');
+            $('#intro div.left button').css('opacity', '0');
         });
 
 
-        $('#cont_1 >*').mouseenter(function () {
-            $('#hdr_1').css('top', '0');
-            $('#dsc_1').css('opacity', '1');
-            $('#btn_1').css('opacity', '1');
-
-        })
-
-        $('#cont_1').mouseout(function () {
-            $('#hdr_1').css('top', '30%');
-            $('#dsc_1').css('opacity', '0');
-            $('#btn_1').css('opacity', '0');
 
 
-        })
+        $('#gallery div.left').mouseenter(function () {
+            $('#gallery div.left').css('opacity', '1');
+        });
+        $('#gallery div.left').mouseout(function () {
+            $('#gallery div.left').css('opacity', '0.5');
+        });
+
+        $('#gallery div.right').mouseenter(function () {
+            $('#gallery div.right').css('opacity', '1');
+        });
+        $('#gallery div.right').mouseout(function () {
+            $('#gallery div.right').css('opacity', '0.5');
+        });
+
+
+        $('#gallery div.right').on('click', function () {
+            if (cursor + 1 == images.length - 1) {
+                cursor = 0
+            } else {
+                cursor++;
+            }
+
+            var image = images[cursor].src;
+            var text = images[cursor].title;
+            $('#background').animate({
+                'opacity': '0',
+            }, 1000, function () {
+
+                $('#background').css('background-image', 'url(' + image + ')')
+                $('#background').animate({
+                    'opacity': '1',
+                }, 1000, function(){
+                    $('#gallery div.text').html(text)
+                })
+            });
+        });
+
+
+        $('#gallery div.left').on('click', function () {
+            if (cursor - 1 < 0) {
+                cursor = images.length - 1
+            } else {
+                cursor--;
+            }
+            var image = images[cursor].src;
+            var text = images[cursor].title;
+
+
+            $('#background').animate({
+                'opacity': '0',
+            }, 1000, function () {
+
+                $('#background').css('background-image', 'url(' + image + ')')
+                $('#background').animate({
+                    'opacity': '1',
+                }, 1000, function(){
+                    $('#gallery div.text').html(text)
+                })
+            });
+        });
+
+        $('#map_link').on('click', function () {
+            $('#intro').css('display', 'none');
+            $('#gallery').css('display', 'none');
+            $('#background iframe').css('visibility', 'visible');
+            $('#footer ul').addClass('dark');
+            $('#about').css('display', 'none');
+
+        });
+
+        $('#gallery_link').on('click', function () {
+            $('#intro').css('display', 'none');
+            $('#gallery').css('display', 'block');
+            $('#background iframe').css('visibility', 'hidden');
+            $('#footer ul').removeClass('dark')
+            $('#about').css('display', 'none');
+
+        });
+
+        $('#main_link').on('click', function () {
+
+            $('#intro').css('display', 'block');
+            $('#gallery').css('display', 'none');
+            $('#about').css('display', 'none');
+            $('#background iframe').css('visibility', 'hidden');
+            $('#footer ul').removeClass('dark');
+
+
+        });
+
+        $('#about_link').on('click', function () {
+            $('#intro').css('display', 'none');
+            $('#gallery').css('display', 'none');
+            $('#about').css('display', 'block');
+            $('#background iframe').css('visibility', 'hidden');
+            $('#footer ul').removeClass('dark');
+        });
     })
+
+    //<div style="top:0;position: fixed;width:100%;height:963px;background-image: url(images/back.jpg);z-index:-1" id="background"></div>
 
 </script>
 </body>
