@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Scheduler extends Model
 {
 
-
+    public $timestamp = false;
     protected $table = 'scheduler';
 
 
-    protected $fillable = ['created_at', 'updated_at', 'begin_rent', 'end_rent', 'phone', 'name', 'time', 'price', 'confirmed', 'note', 'pledge', 'old_client', 'status', 'number_of_positions','place_of_return','city_of_return','place_of_renting','city_of_renting','passport','passport_name'];
+    protected $fillable = ['created_at', 'updated_at', 'begin_rent', 'end_rent', 'phone', 'name', 'time', 'price', 'confirmed', 'note', 'pledge', 'old_client', 'status', 'number_of_positions','place_of_return','city_of_return','place_of_renting','city_of_renting','passport','passport_name','delivery_price','delivery_from','delivery_to','begin_evening_flag'];
 
     public function Kayak()
     {
@@ -30,7 +30,7 @@ class Scheduler extends Model
 
     public function Paddle()
     {
-        return $this->belongsToMany('App\Paddle', 'scheduler_paddle');
+        return $this->belongsToMany('App\Paddle', 'scheduler_paddle')->withPivot('number');
     }
 
     public function getBeginRentDayAttribute()

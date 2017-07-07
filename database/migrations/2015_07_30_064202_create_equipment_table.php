@@ -15,7 +15,7 @@ class CreateEquipmentTable extends Migration
         Schema::create('equipment', function($table)
         {
             $table->increments('id');
-            $table->timestamps();
+           // $table->timestamps();
             $table->string('title', 255)->nullable();
             $table->string('photo', 255)->nullable();
             $table->decimal('price',8,2)->nullable();

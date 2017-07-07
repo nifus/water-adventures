@@ -15,7 +15,7 @@ class CreateScheduleTable extends Migration
         Schema::create('scheduler', function($table)
         {
             $table->increments('id');
-            $table->timestamps();
+           // $table->timestamps();
             $table->date('begin_rent');
             $table->date('end_rent');
             $table->string('phone')->nullable();

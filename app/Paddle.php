@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Paddle extends Model
 {
 
-
+    public $timestamp = false;
     protected $table = 'paddle';
 
 

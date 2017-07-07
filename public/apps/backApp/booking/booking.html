@@ -1,99 +1,113 @@
 <div class="container-fluid" style="margin-top:70px">
-
-
     <div class="panel panel-default">
         <div class="panel-heading">Добавить бронь</div>
 
         <div class="panel-body">
-            <form action="">
-                <div class="form-group">
-                    <label>Дата начала</label>
+            <form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Дата начала</label>
 
-                    <div class="form-inline">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" role="button"
-                               data-toggle="dropdown">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" disabled
-                                           value="{{model.begin_rent|date:'dd-MM-yyyy'}}">
-                                                                <span class="input-group-addon"><i
-                                                                        class="glyphicon glyphicon-calendar"></i></span>
+                            <div class="form-inline">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" role="button"
+                                       data-toggle="dropdown">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" disabled
+                                                   value="{{model.begin_rent|date:'dd-MM-yyyy'}}">
+                                            <span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker data-ng-model="model.begin_rent"
+                                                        data-ng-change="changeDate()"
+                                                        data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
+                                    </ul>
+                                    <input type="email" class="form-control" placeholder="Время"
+                                           ng-model="model.begin_rent_time">
                                 </div>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker data-ng-model="model.begin_rent"
-                                                data-ng-change="changeDate()"
-                                                data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
-                            </ul>
-                            <input type="email" class="form-control" placeholder="Время"
-                                   ng-model="model.begin_rent_time">
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-click="changeDate()" ng-model="model.begin_evening_flag"> После 17:00
+                                </label>
+                            </div>
                         </div>
                     </div>
 
-                </div>
-                <div class="form-group">
-                    <label>Дата конца</label>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Дата конца</label>
 
-                    <div class="form-inline">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" id="dropdown2" role="button"
-                               data-toggle="dropdown">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" disabled
-                                           value="{{model.end_rent|date:'dd-MM-yyyy'}}">
-                                                                <span class="input-group-addon"><i
-                                                                        class="glyphicon glyphicon-calendar"></i></span>
+                            <div class="form-inline">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle" id="dropdown2" role="button"
+                                       data-toggle="dropdown">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" disabled
+                                                   value="{{model.end_rent|date:'dd-MM-yyyy'}}">
+                                            <span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <datetimepicker data-ng-model="model.end_rent"
+                                                        data-ng-change="changeDate()"
+                                                        data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
+                                    </ul>
+                                    <input type="email" class="form-control" placeholder="Время"
+                                           ng-model="model.end_rent_time">
                                 </div>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker data-ng-model="model.end_rent"
-                                                data-ng-change="changeDate()"
-                                                data-datetimepicker-config="{minView:'day', dropdownSelector: '#dropdown2' }"/>
-                            </ul>
-                            <input type="email" class="form-control" placeholder="Время" ng-model="model.end_rent_time">
+                            </div>
                         </div>
                     </div>
                 </div>
 
 
-                <div class="form-group">
-
-                    <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-2">
                         <label>Байдарки</label>
                         <div class="checkbox" ng-repeat="kayak in  env.kayaks">
                             <label ng-style="{color:isFreeKayak(kayak) ? 'green' : 'red' }">
-                                <input type="checkbox" checklist-change="updatePrice()" checklist-model="model.kayak" checklist-value="kayak.id">
+                                <input type="checkbox" checklist-change="changeDate()" checklist-model="model.kayak"
+                                       checklist-value="kayak.id">
                                 {{kayak.title}} {{kayak.color}}
                             </label>
 
                         </div>
-                        </div>
-                    <div class="col-md-3">
+                    </div>
+
+
+                    <!--<div class="col-md-2">
                         <label>Весла</label>
-                        <ul style="list-style-type: none;padding:0px;width:100px">
-                            <li ng-repeat="paddle in  env.paddles">
-                                {{paddle.title}} {{paddle.size}}<input type="number" class="form-control" style="margin:10px"  ng-model="model.paddle[paddle.id]">
+                        <ul style="list-style-type: none;padding:0">
+                            <li ng-repeat="paddle in env.paddles">
+                                {{paddle.title}} ({{paddle.number}})<input type="number" class="form-control"
+                                                                       style="margin:10px"
+
+                                                                       ng-model="model.paddle[paddle.id].number">
                             </li>
                         </ul>
-                        <div class="checkbox" ng-repeat="paddle in  env.paddles">
-                            <label>
-                                <input type="checkbox" checklist-model="model.paddle" checklist-value="paddle.id">
-                                {{paddle.title}} {{paddle.size}} ({{paddle.number}})
-                            </label>
-                        </div>
                     </div>
 
-                    <div class="col-md-3">
+
+                    <div class="col-md-2">
                         <label>Гермы</label>
-                        <div class="checkbox" ng-repeat="bag in env.bags">
-                            <label>
-                                <input type="checkbox" checklist-model="model.bag" checklist-value="bag.id">
-                                {{bag.title}} {{bag.desc}} ({{bag.number}})
-                            </label>
-                        </div>
+                        <ul style="list-style-type: none;padding:0px">
+                            <li ng-repeat="bag in env.bags">
+                                {{bag.title}} {{bag.desc}} ({{bag.number}})<input type="number" class="form-control"
+                                                                           style="margin:10px"
+
+                                                                           ng-model="model.bag[bag.id]">
+                            </li>
+                        </ul>
+
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label>Доп. Стаф</label>
                         <div class="checkbox" ng-repeat="equipment in  env.equipments">
                             <label>
@@ -101,6 +115,14 @@
                                 {{equipment.title}}
                             </label>
                         </div>
+                    </div>-->
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="env.waiting"  ng-true-value="1" ng-false-value="0">
+                            В очередь
+                        </label>
                     </div>
                 </div>
 
@@ -108,11 +130,15 @@
                     <label>Цена ({{env.price}})</label>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" ng-model="model.old_client" ng-change="updatePrice()" >
+                            <input type="checkbox" ng-model="model.old_client" ng-change="updatePrice()" ng-true-value="1" ng-false-value="0">
                             Постоянный клиент
                         </label>
                     </div>
-                    <input type="text" class="form-control" ng-model="model.price" >
+                    <input type="text" class="form-control" ng-model="model.price">
+
+                    <ul>
+                        <li ng-repeat="detail in env.details">{{detail}}</li>
+                    </ul>
                 </div>
 
                 <div class="form-group">
@@ -125,28 +151,76 @@
                     <input type="text" class="form-control" ng-model="model.phone">
                 </div>
 
+                <!--  <div class="form-group">
+                     <label>Имя</label>
+                     <input type="text" class="form-control" ng-model="model.name">
+                 </div>
+
                 <div class="form-group">
-                    <label>Имя</label>
-                    <input type="text" class="form-control" ng-model="model.name">
+                     <label>Город выдачи</label>
+                     <input type="text" class="form-control" ng-model="model.city_of_renting">
+                 </div>
+                 <div class="form-group">
+                     <label>Город сдачи</label>
+                     <input type="text" class="form-control" ng-model="model.city_of_return">
+                 </div>-->
+
+                <div class="form-group">
+                    <label>Место выдачи</label>
+                    <select class="form-control" ng-model="env.place_of_renting" ng-change="changePlaceOfRenting()">
+                        <option value="оз. Вуокса, Приозерск">оз. Вуокса, Приозерск</option>
+                        <option value="оз. Вуокса, Синево">оз. Вуокса, Синево</option>
+                        <option value="оз. Вуокса, Коммунары">оз. Вуокса, Коммунары</option>
+                        <option value="оз. Ладожское, Кузнечное">оз. Ладожское, Кузнечное</option>
+                        <option value="оз. Ладожское, Березово">оз. Ладожское, Березово</option>
+                        <option value="оз. Ладожское, Куркиеки">оз. Ладожское, Куркиеки</option>
+                        <option value="оз. Ладожское, Терву">оз. Ладожское, Терву</option>
+                        <option value="оз. Ладожское, Лахденпохья">оз. Ладожское, Лахденпохья</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+
+                <div class="form-group" ng-if="env.place_of_renting=='Другое'">
+                    <label>Укажите место выдачи</label>
+                    <input type="text" class="form-control" ng-model="model.place_of_renting" >
                 </div>
 
                 <div class="form-group">
-                    <label>Город выдачи</label>
-                    <input type="text" class="form-control" ng-model="model.city_of_renting">
+                    <label>
+                        <input type="checkbox" ng-model="model.delivery_from" ng-true-value="'1'" ng-false-value="'0'"> &nbsp;
+                        Нужна доставка
+                    </label>
                 </div>
+
+
                 <div class="form-group">
-                    <label>Город сдачи</label>
-                    <input type="text" class="form-control" ng-model="model.city_of_return">
+                    <label>Место возврата</label>
+                    <select class="form-control" ng-model="env.place_of_return" ng-change="changePlaceOfReturn()">
+                        <option value="оз. Вуокса, Приозерск">оз. Вуокса, Приозерск</option>
+                        <option value="оз. Вуокса, Синево">оз. Вуокса, Синево</option>
+                        <option value="оз. Вуокса, Коммунары">оз. Вуокса, Коммунары</option>
+                        <option value="оз. Ладожское, Кузнечное">оз. Ладожское, Кузнечное</option>
+                        <option value="оз. Ладожское, Березово">оз. Ладожское, Березово</option>
+                        <option value="оз. Ладожское, Куркиеки">оз. Ладожское, Куркиеки</option>
+                        <option value="оз. Ладожское, Терву">оз. Ладожское, Терву</option>
+                        <option value="оз. Ладожское, Лахденпохья">оз. Ладожское, Лахденпохья</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+
+                <div class="form-group" ng-if="env.place_of_return=='Другое'">
+                    <label>Укажите место возврата</label>
+                    <input type="text" class="form-control" ng-model="model.place_of_return" >
                 </div>
 
                 <div class="form-group">
-                    <label>Озеро выдачи</label>
-                    <input type="text" class="form-control" ng-model="model.place_of_renting">
+                    <label>
+                        <input type="checkbox" ng-model="model.delivery_to" ng-true-value="'1'" ng-false-value="'0'"> &nbsp;
+                        Нужен забор
+                    </label>
                 </div>
-                <div class="form-group">
-                    <label>Озеро сдачи</label>
-                    <input type="text" class="form-control" ng-model="model.place_of_return">
-                </div>
+
+
 
                 <div class="form-group">
                     <label>ФИО</label>
@@ -164,7 +238,7 @@
 
                 <div class="form-group">
                     <label>Подтверждено</label>
-                    <input type="checkbox"  ng-model="model.confirmed" value="1">
+                    <input type="checkbox" ng-model="model.confirmed" value="1">
                 </div>
 
                 <div class="form-group">

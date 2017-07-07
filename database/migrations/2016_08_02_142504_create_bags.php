@@ -35,6 +35,7 @@ class CreateBags extends Migration
         {
             $table->integer('scheduler_id');
             $table->integer('paddle_id');
+            $table->smallInteger('number');
         });
 
         Schema::create('scheduler_bag', function($table)

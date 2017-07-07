@@ -50,15 +50,7 @@ class KayakSeeder extends Seeder
             'note' => '2016 год. юзанная',
             'order' => 4,
         ]);
-        DB::table('kayak')->insert([
-            'title' => 'Ладога 2',
-            'desc' => 'Двух местная каркасная байдарка',
-            'price' => 1500,
-            'vendor_code' => 'ld_05',
-            'color' => 'синий',
-            'note' => '2016 год. юзанная',
-            'order' => 5,
-        ]);
+
         DB::table('kayak')->insert([
             'title' => 'Ладога 2',
             'desc' => 'Двух местная каркасная байдарка',

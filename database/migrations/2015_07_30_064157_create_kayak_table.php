@@ -15,7 +15,7 @@ class CreateKayakTable extends Migration
         Schema::create('kayak', function($table)
         {
             $table->increments('id');
-            $table->timestamps();
+           // $table->timestamps();
             $table->string('title', 255)->nullable();
             $table->string('photo')->nullable();
             $table->text('desc')->nullable();

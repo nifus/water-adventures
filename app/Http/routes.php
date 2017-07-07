@@ -14,6 +14,8 @@ Route::group(['prefix' => 'backend'], function () {
     Route::resource('kayak', 'KayakController');
     Route::resource('equipment', 'EquipmentController');
     //Route::resource('scheduler', 'SchedulerController');
+    Route::get('scheduler/stat', 'SchedulerController@getStat');
+
     Route::put('scheduler/{id}/status', 'SchedulerController@updateStatus');
     Route::put('scheduler/{id}/note', 'SchedulerController@updateNote');
     Route::put('scheduler/{id}', 'SchedulerController@update');

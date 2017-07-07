@@ -19,72 +19,61 @@
             url: '/booking/:id',
             templateUrl: '../apps/backApp/booking/booking.html',
             controller: 'bookingController'
+        }).state('stat', {
+            url: '/stat',
+            templateUrl: '../apps/backApp/stat/stat.html',
+            controller: 'statController'
         })
     }).run(function ($templateCache, $http) {
        // $http.get('../apps/backApp/dashboard/dashboard.html', { cache: $templateCache });
        // $http.get('../apps/backApp/booking/booking.html', { cache: $templateCache });
-    }).provider('$templateCache', function(){
-        this.$get = ['cacheFactoryLocalStorage', function($cacheFactoryLocalStorage) {
-            return $cacheFactoryLocalStorage;
-        }];
-    }).factory('cacheFactoryLocalStorage',[
-        '$cacheFactory',
-        function($cacheFactory){
-            var LocalStorageCache = {
-                put: function(key, val){
-                    if(!val) return;
-                    var cacheVal = {
-                        val: val,
-                        time: new Date().getTime()
-                    };
+    }).filter('tel', function () {
+        return function (tel) {
+            if (!tel) { return ''; }
 
-                   /* if(typeof templatesObj !== "undefined"){
-                        cacheVal['md5'] = templatesObj[key];
-                    }*/
+            var value = tel.toString().trim().replace(/^\+| |\-|\(|\)/g, '');
+           // value = tel.toString().trim().replace(/ /g, '');
 
-                    var item = localStorage.getItem('appCache');
-                    var tmpObj = {};
-                    if(item){
-                        tmpObj = JSON.parse(item);
-                    }
-                    tmpObj[key] = cacheVal;
+            if (value.match(/[^0-9]/)) {
+                return tel;
+            }
 
-                    localStorage.setItem('appCache', JSON.stringify(tmpObj));
-                },
-                get: function(key){
-                    var item = localStorage.getItem('appCache');
-                    if(!item) return;
-                    var itemObj = JSON.parse(item);
+            var country, city, number;
 
-                    if( itemObj[key]==undefined) return;
+            switch (value.length) {
+                case 10: // +1PPP####### -> C (PPP) ###-####
+                    country = 1;
+                    city = value.slice(0, 3);
+                    number = value.slice(3);
+                    break;
 
-                    var templatesObjCache = itemObj[key];
-                    var dateCurrent = new Date();
-                    var dateItem = new Date(templatesObjCache.time);
+                case 11: // +CPPP####### -> CCC (PP) ###-####
+                    country = value[0];
+                    city = value.slice(1, 4);
+                    number = value.slice(4);
+                    break;
 
-                    /*if(dateCurrent.getDaysBetween(dateItem)>1) return;
-                    if(typeof templatesObj !== "undefined" && typeof templatesObj[key] !== "undefined"){
-                        if(templatesObj['md5'] != templatesObjCache[key]) return;
-                    }
-                    if(_.isEmpty(templatesObjCache['val'])) return;*/
-                    return templatesObjCache['val'];
+                case 12: // +CCCPP####### -> CCC (PP) ###-####
+                    country = value.slice(0, 3);
+                    city = value.slice(3, 5);
+                    number = value.slice(5);
+                    break;
 
-                },
-                remove: function(){
+                default:
+                    return tel;
+            }
 
-                },
-                removeAll: function(){
+            if (country == 1) {
+                country = "";
+            }
 
-                },
-                destroy: function() {
+            number = number.slice(0, 3) + '-' + number.slice(3);
 
-                },
-                info: function() {
-                }
-            };
-            //проверяем поддержку браузера если нет возвращаем дефолтный кешер
-            return  window.localStorage ? LocalStorageCache : $cacheFactory('appCache');
-        }]);
+            return (country + " (" + city + ") " + number).trim();
+        };
+    });
+
+
 })(angular);
 
 

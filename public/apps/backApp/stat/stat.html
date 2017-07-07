@@ -1,0 +1,193 @@
+<div class="container-fluid" style="margin-top:70px">
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Статистика за 2016</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">помесячно</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <td>Апрель</td>
+                            <td>{{env.profit['2016'].end["4"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Май</td>
+                            <td>{{env.profit['2016'].end["5"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Июнь</td>
+                            <td>{{env.profit['2016'].end["6"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Июль</td>
+                            <td>{{env.profit['2016'].end["7"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Августа</td>
+                            <td>{{env.profit['2016'].end["8"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Сентябрь</td>
+                            <td>{{env.profit['2016'].end["9"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Октябрь</td>
+                            <td>{{env.profit['2016'].end["10"]}}</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">по байдаркам</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <td>Ладога 2 2015 год. новая желтый</td>
+                            <td>{{env.kayaks['2016']["ld_01"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ладога 2 2016 год. новая красный</td>
+                            <td>{{env.kayaks['2016']["ld_02"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ладога 2 2016 год. новая красный</td>
+                            <td>{{env.kayaks['2016']["ld_03"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ладога 2 2016 год. юзаная синяя</td>
+                            <td>{{env.kayaks['2016']["ld_04"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ладога 2 2016 год. юзаная красная</td>
+                            <td>{{env.kayaks['2016']["ld_06"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Нева 2015 год. юзаная синий</td>
+                            <td>{{env.kayaks['2016']["ld_07"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Нева 2015 год. юзаная зеленая</td>
+                            <td>{{env.kayaks['2017']["ld_08"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Викинг 4.7 желтый</td>
+                            <td>{{env.kayaks['2016']["ld_10"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Викинг 4.7 красный</td>
+                            <td>{{env.kayaks['2016']["ld_11"]}}</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h2>Статистика за 2017</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">помесячно</div>
+
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <td>Апрель</td>
+                            <td>{{env.profit['2017'].end["4"]}} (<span style="color:red">{{env.profit['2017'].future["4"]}}</span>)</td>
+                        </tr>
+                        <tr>
+                            <td>Май</td>
+                            <td>{{env.profit['2017'].end["5"]}} (<span style="color:red">{{env.profit['2017'].future["5"]}}</span>)</td>
+                        </tr>
+                        <tr>
+                            <td>Июнь</td>
+                            <td>{{env.profit['2017'].end["6"]}} (<span style="color:red">{{env.profit['2017'].future["6"]}}</span>)</td>
+                        </tr>
+                        <tr>
+                            <td>Июль</td>
+                            <td>{{env.profit['2017'].end["7"]}} (<span style="color:red">{{env.profit['2017'].future["7"]}}</span>)</td>
+                        </tr>
+                        <tr>
+                            <td>Августа</td>
+                            <td>{{env.profit['2017'].end["8"]}} (<span style="color:red">{{env.profit['2017'].future["8"]}}</span>)</td>
+                        </tr>
+                        <tr>
+                            <td>Сентябрь</td>
+                            <td>{{env.profit['2017'].end["9"]}} (<span style="color:red">{{env.profit['2017'].future["9"]}}</span>)</td>
+                        </tr>
+                        <tr>
+                            <td>Октябрь</td>
+                            <td>{{env.profit['2017'].end["10"]}} (<span style="color:red">{{env.profit['2017'].future["10"]}}</span>)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">по байдаркам</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <td>Ладога 2 2015 год. новая желтый</td>
+                            <td>{{env.kayaks['2017']["ld_01"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ладога 2 2016 год. новая красный</td>
+                            <td>{{env.kayaks['2017']["ld_02"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ладога 2 2016 год. новая красный</td>
+                            <td>{{env.kayaks['2017']["ld_03"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ладога 2 2016 год. юзаная синяя</td>
+                            <td>{{env.kayaks['2017']["ld_04"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ладога 2 2016 год. юзаная красная</td>
+                            <td>{{env.kayaks['2017']["ld_06"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Вектор 2 2017 год. новая желтая</td>
+                            <td>{{env.kayaks['2017']["ld_13"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Вектор 2 2017 год. новая желтая</td>
+                            <td>{{env.kayaks['2017']["ld_14"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Нева 2015 год. юзаная синий</td>
+                            <td>{{env.kayaks['2017']["ld_07"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Нева 2015 год. юзаная зеленая</td>
+                            <td>{{env.kayaks['2017']["ld_08"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Варгуза 2017 год. желтая красная</td>
+                            <td>{{env.kayaks['2017']["ld_12"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Нева 2017 год. юзаная красная двухместная</td>
+                            <td>{{env.kayaks['2017']["id_15"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Викинг 4.7 желтый</td>
+                            <td>{{env.kayaks['2017']["ld_10"]}}</td>
+                        </tr>
+                        <tr>
+                            <td>Викинг 4.7 красный</td>
+                            <td>{{env.kayaks['2017']["ld_11"]}}</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

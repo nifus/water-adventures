@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 class SchedulerController extends BaseController
 {
 
+    function getStat(){
+
+        $orders = Scheduler::with('Kayak')->get();
+        return response()->json($orders->toArray());
+
+    }
+
     function getById($id){
         $order = Scheduler::with('Kayak')->with('Bag')->with('Paddle')->with('Equipment')->find($id);
         return response()->json($order->toArray());
@@ -47,6 +54,7 @@ class SchedulerController extends BaseController
 
         $order->update($all);
         $order->Kayak()->sync($all['kayak']);
+        $order->Paddle()->sync($all['paddle']);
         return response()->json(['success'=>true], 200, [], JSON_NUMERIC_CHECK );
     }
 }

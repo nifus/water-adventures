@@ -12,7 +12,7 @@ class AlterCancelStatus extends Migration
      */
     public function up()
     {
-        \DB::statement("ALTER TABLE  `scheduler` CHANGE  `status`  `status` ENUM(  'new',  'working',  'closed',  'canceled' ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT  'new';");
+        \DB::statement("ALTER TABLE  `scheduler` CHANGE  `status`  `status` ENUM(  'new',  'working',  'closed',  'canceled' ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'new';");
     }
 
     /**

@@ -11,6 +11,7 @@
             Object.BeginShort = Object.Begin.format('DD MMM(ddd)');
             Object.End = moment(Object.end_rent);
             Object.EndShort = Object.End.format('DD MMM(ddd)');
+            Object.EndShort = Object.End.format('DD MMM(ddd)');
 
 
 

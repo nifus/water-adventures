@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kayak extends Model
 {
 
-
+    public $timestamp = false;
     protected $table = 'kayak';
 
 
@@ -17,7 +17,7 @@ class Kayak extends Model
 
 
     static function getAll(){
-        return self::orderBy('order','ASC')
+        return self::orderBy('order','ASC')->where('display','1')
             ->get();
     }
 

@@ -1,0 +1,4 @@
+AuthName "Private zone"
+AuthType Basic  
+Require valid-user
+AuthUserFile /home/dev/www/water-adventures.ru/public/back/.htpasswd

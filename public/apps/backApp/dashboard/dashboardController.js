@@ -12,11 +12,18 @@
             weekend: getNextWeekend(),
             hideCalendar: false,
             orders: [],
+            total:0,
             busyKayaks: [],
             freeKayaks: [],
             begin_task: null,
             end_task: null,
-            tasks: []
+            tasks: [],
+            total_tasks: 0,
+            transfers:[],
+            action: 'orders',
+            startDate: null,
+            endDate:null,
+            waiting_orders:[]
         };
 
 
@@ -25,12 +32,103 @@
         /* $q.all([agentsPromise]).then(function () {
          deferred.resolve();
          });*/
+        $scope.setToday = function () {
+            $scope.setDate(moment().toDate(), moment().toDate())
+        };
+        $scope.setTomorrow = function () {
+            $scope.setDate(moment().add(1,'day').toDate(), moment().add(1,'day').toDate())
+        };
+
+        $scope.setCurrentHolidays = function () {
+            var now = moment();
+            var day_of_week = now.format('E');
+            var start, end;
+            if ( day_of_week<5 ){
+                start = moment().add((5-day_of_week) ,'days');
+                end = moment().add((7-day_of_week), 'days');
+            }else if( day_of_week>=5 ){
+                start = moment().subtract(day_of_week-5 ,'days');
+                end = moment().subtract(day_of_week-7 ,'days');
+            }
+            $scope.setDate(start.toDate(), end.toDate())
+        };
+        $scope.setNextHolidays = function () {
+            var now = moment();
+            var day_of_week = now.format('E');
+            var start, end;
+            if ( day_of_week<5 ){
+                start = moment().add((5-day_of_week) ,'days');
+                end = moment().add((7-day_of_week), 'days');
+            }else if( day_of_week>=5 ){
+                start = moment().subtract(day_of_week-5 ,'days');
+                end = moment().subtract(day_of_week-7 ,'days');
+            }
+            $scope.setDate(start.toDate(), end.toDate())
+        };
+
         $scope.changeDate = function () {
             $scope.setDate($scope.env.startDate, $scope.env.endDate)
+        };
+
+        function updateTransfers() {
+            var count =  moment($scope.env.endDate).diff( moment($scope.env.startDate), 'days', true )+1;
+            var total_tasks = 0;
+            var date;
+            var tasks;
+            var total = [];
+            for( var i=0; i<count; i++ ){
+                date = moment($scope.env.startDate).add(i,'days');
+                tasks = [];
+                $scope.env.busyKayaks.forEach(function (order) {
+                    if (order.status=='canceled' || order.status=='waiting' ){
+                        return;
+                    }
+                    if ( moment(order.begin_rent).isSame(date,'day')==true ){
+                        if ( order.delivery_from=='1' ){
+                            tasks.push( {type:'transfer_to', order: order} );
+                            total_tasks++;
+                        }else{
+                            tasks.push( {type:'order_to', order: order} );
+                            total_tasks++;
+                        }
+                    }
+                    if ( moment(order.end_rent).isSame(date,'day')==true ){
+                        if ( order.delivery_to=='1' ){
+                            tasks.push( {type:'transfer_from', order: order} );
+                            total_tasks++;
+                        }else{
+                            tasks.push( {type:'order_from', order: order} );
+                            total_tasks++;
+                        }
+
+                    }
+
+                });
+                total.push({date:date.format('dddd, D MMM'), tasks:tasks})
+            }
+
+            $scope.env.tasks = total;
+            $scope.env.total_tasks = total_tasks;
+
+
+            //console.log(total)
         }
 
-        $scope.changeStatus = function (status) {
+        function updateTotal(orders) {
+            var total = 0;
+            for( var i in orders ){
+                var order = orders[i];
+                if ( order.status!='canceled' && order.status!='waiting' ){
+                    total+=parseFloat(order.price);
+                }
+            }
+            $scope.env.total = total;
+        }
 
+        $scope.setAction = function (action) {
+            $scope.env.action = action;
+        }
+        $scope.changeStatus = function (status) {
             if (status == '') {
                 $scope.changeDate()
             } else {
@@ -41,8 +139,7 @@
                     return false;
                 });
             }
-
-        }
+        };
 
         $scope.setDate = function (start, end) {
             if (moment(start).isAfter(end)) {
@@ -59,6 +156,9 @@
             var startMoment = moment(start).subtract(1, 'hour');
             var endMoment = moment(end).add(1, 'hour');
             $scope.env.busyKayaks = $scope.env.orders.filter(function (order) {
+                if (order.status=='waiting') {
+                    return false
+                }
                 if (order.Begin.isBetween(startMoment, endMoment)) {
                     return true
                 }
@@ -71,9 +171,40 @@
                 }
                 return false;
             });
+
             $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
+            updateTransfers()
+
+            updateTotal( $scope.env.busyKayaks);
+
+            updateWaiting(startMoment, endMoment, $scope.env.orders);
         };
 
+        function updateWaiting(startMoment, endMoment , orders) {
+
+            var waiting_orders =[];
+            orders = orders.filter(function (order) {
+                if (order.Begin.isBetween(startMoment, endMoment)) {
+                    return true
+                }
+                if (order.End.isBetween(startMoment, endMoment)) {
+                    return true
+                }
+
+                if (order.Begin.isSameOrBefore(startMoment) && order.End.isSameOrAfter(endMoment)) {
+                    return true
+                }
+                return false;
+            });
+
+            for( var i in orders ){
+                if ( orders[i].status=='waiting' ){
+                    waiting_orders.push(orders[i])
+                }
+            }
+            $scope.env.waiting_orders = waiting_orders;
+
+        }
 
         function generateCalendar(nextWeekend) {
             var result = {};
@@ -121,7 +252,6 @@
 
             }
             return result;
-
         }
 
         function getNextWeekend() {
@@ -148,7 +278,7 @@
 
         var schedulerPromise = schedulerFactory.getAll().then(function (response) {
             $scope.env.orders = response;
-        })
+        });
 
         var kayakPromise = kayakFactory.getAll().then(function (response) {
             $scope.env.kayaks = response;
@@ -158,7 +288,7 @@
             $scope.setDate($scope.env.weekend.begin.toDate(), $scope.env.weekend.end.toDate());
             $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
 
-            $scope.setTaskDate(moment().toDate(), moment().add(1, 'days').toDate());
+           // $scope.setTaskDate(moment().toDate(), moment().add(1, 'days').toDate());
 
         });
 
@@ -167,7 +297,7 @@
             return $scope.env.kayaks.filter(function (kayak) {
                 for (var i in orders) {
                     var order = orders[i];
-                    if (order.status!='canceled' && order.status!='closed' ){
+                    if (order.status!='waiting' && order.status!='canceled' && order.status!='closed' ){
                         for (var j in order.kayak) {
                             var busy = order.kayak[j];
                             if (busy.id == kayak.id) {
@@ -203,36 +333,9 @@
             });
         }
 
-        $scope.changeTaskDate = function () {
-            $scope.setTaskDate($scope.env.begin_task, $scope.env.end_task)
-        }
-
-        $scope.setTaskDate = function (start, end) {
-
-            if (moment(start).isAfter(end)) {
-                end = start
-            }
-            $scope.env.weekend = moment(start, 'D-MM-YYYY').add(1, 'days');
-
-            $scope.env.begin_task = start;
-            $scope.env.end_task = end;
 
 
-            var startMoment = moment(start).subtract(1, 'hour');
-            var endMoment = moment(end).add(1, 'hour');
-            $scope.env.tasks = $scope.env.orders.filter(function (order) {
-                if (order.Begin.isBetween(startMoment, endMoment)) {
-                    return true
-                }
-                if (order.End.isBetween(startMoment, endMoment)) {
-                    return true
-                }
 
-                return false;
-            });
-            //$scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
-
-        };
     }
 })();
 
