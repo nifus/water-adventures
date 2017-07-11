@@ -20,7 +20,7 @@ class SchedulerController extends BaseController
     }
 
     function index(){
-        $rows = Scheduler::with('Kayak')->with('Bag')->with('Paddle')->with('Equipment')->orderBy('begin_rent','ASC');
+        $rows = Scheduler::with('Kayak')->with('Bag')->with('Paddle')->with('Equipment')->where('status','!=','canceled')->orderBy('begin_rent','ASC');
         return response()->json($rows->get()->toArray());
     }
 

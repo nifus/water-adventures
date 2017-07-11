@@ -52,6 +52,7 @@
             }
             $scope.setDate(start.toDate(), end.toDate())
         };
+
         $scope.setNextHolidays = function () {
             var now = moment();
             var day_of_week = now.format('E');
@@ -71,7 +72,7 @@
         };
 
         function updateTransfers() {
-            var count =  moment($scope.env.endDate).diff( moment($scope.env.startDate), 'days', true )+1;
+            var count =  moment($scope.env.endDate).diff( moment($scope.env.startDate), 'days' )+1;
             var total_tasks = 0;
             var date;
             var tasks;
@@ -84,22 +85,36 @@
                         return;
                     }
                     if ( moment(order.begin_rent).isSame(date,'day')==true ){
-                        if ( order.delivery_from=='1' ){
-                            tasks.push( {type:'transfer_to', order: order} );
+                        if ( order.status=='working' ||  order.status=='closed'){
+                            tasks.push( {type:'closed', order: order} );
                             total_tasks++;
                         }else{
-                            tasks.push( {type:'order_to', order: order} );
-                            total_tasks++;
+                            if ( order.delivery_from=='1' ){
+                                tasks.push( {type:'transfer_to', order: order} );
+                                total_tasks++;
+                            }else{
+                                tasks.push( {type:'order_to', order: order} );
+                                total_tasks++;
+                            }
                         }
+
                     }
+
                     if ( moment(order.end_rent).isSame(date,'day')==true ){
-                        if ( order.delivery_to=='1' ){
-                            tasks.push( {type:'transfer_from', order: order} );
+
+                        if ( order.status=='closed'){
+                            tasks.push( {type:'closed', order: order} );
                             total_tasks++;
                         }else{
-                            tasks.push( {type:'order_from', order: order} );
-                            total_tasks++;
+                            if ( order.delivery_to=='1' ){
+                                tasks.push( {type:'transfer_from', order: order} );
+                                total_tasks++;
+                            }else{
+                                tasks.push( {type:'order_from', order: order} );
+                                total_tasks++;
+                            }
                         }
+
 
                     }
 
@@ -149,19 +164,27 @@
             $scope.env.calendar = generateCalendar($scope.env.weekend);
             $scope.env.hideCalendar = true;
 
-            $scope.env.startDate = start;
-            $scope.env.endDate = end;
+            $scope.env.startDate = moment(start).hours(0).minutes(0).toDate();
+            $scope.env.endDate = moment(end).hours(23).minutes(59).toDate();
 
 
-            var startMoment = moment(start).subtract(1, 'hour');
-            var endMoment = moment(end).add(1, 'hour');
+
+            var startMoment = moment(moment($scope.env.startDate).format('YYYY-MM-D'));
+            var endMoment = moment(moment($scope.env.endDate).format('YYYY-MM-D'));
+
+
+
             $scope.env.busyKayaks = $scope.env.orders.filter(function (order) {
+
                 if (order.status=='waiting') {
                     return false
                 }
+
                 if (order.Begin.isBetween(startMoment, endMoment)) {
                     return true
                 }
+
+
                 if (order.End.isBetween(startMoment, endMoment)) {
                     return true
                 }

@@ -156,15 +156,24 @@
 
             <table class="table" ng-if="days.tasks.length>0">
                 <tr ng-repeat="task in days.tasks"
-                    ng-class="{'warning':task.type=='order_to' || task.type=='order_from','danger':task.type=='transfer_to' || task.type=='transfer_from'}">
+                    ng-class="{'warning':(task.type=='order_to' || task.type=='order_from') ,'danger':task.type=='transfer_to' || task.type=='transfer_from','info':task.type=='closed'}">
                     <td>{{task.order.id}}</td>
                     <td>{{task.order.phone|tel}}</td>
+                    <td>
+                        <span class="glyphicon glyphicon-chevron-right" ng-if=" task.type=='order_to' || task.type=='transfer_to'">{{task.order.place_of_renting}}</span>
+                        <span class="glyphicon glyphicon-chevron-left" ng-if="task.type=='order_from' || task.type=='transfer_from'">{{task.order.place_of_return}}</span>
+
+
+                    </td>
                     <td><ul style="padding-left: 0px;list-style-type: none">
                         <li ng-repeat="kayak in task.order.kayak"><strong>{{kayak.title}}
                             {{kayak.color}}</strong>
                             {{kayak.note}}
                         </li>
                     </ul></td>
+                    <td>
+                        {{task.order.note}}
+                    </td>
                 </tr>
             </table>
         </div>
