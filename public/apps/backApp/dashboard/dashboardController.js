@@ -170,7 +170,8 @@
 
 
             var startMoment = moment(moment($scope.env.startDate).format('YYYY-MM-D'));
-            var endMoment = moment(moment($scope.env.endDate).format('YYYY-MM-D'));
+            var endMoment = moment($scope.env.endDate);
+
 
 
 
@@ -179,6 +180,8 @@
                 if (order.status=='waiting') {
                     return false
                 }
+
+
 
                 if (order.Begin.isBetween(startMoment, endMoment)) {
                     return true
@@ -190,6 +193,9 @@
                 }
 
                 if (order.Begin.isSameOrBefore(startMoment) && order.End.isSameOrAfter(endMoment)) {
+                    return true
+                }
+                if (order.Begin.isSame(startMoment) || order.End.isSame(endMoment)) {
                     return true
                 }
                 return false;

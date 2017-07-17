@@ -205,7 +205,13 @@
             $scope.env.details.push('Всего дней: '+(number_of_days+1) );
             var number_on_days = 0;
             var number_off_days = 0;
-            var additional_price = moment(begin).isAfter('2017-06-20')  && moment(begin).isBefore('2017-09-1') ? 200 : 0;
+                // В июле на 200р больлше
+            var additional_price = moment(begin).isAfter('2017-06-20')  && moment(begin).isBefore('2017-08-1') ? 200 : 0;
+
+                //  В августе на 200р меньше
+            var low_price = moment(begin).isAfter('2017-08-1') ? 200 : 0;
+
+
             for (var i = 0; i <= number_of_days; i++) {
                 if (isWeekend(moment(begin).add(i, 'days'))) {
                     number_off_days++;
@@ -221,7 +227,7 @@
             }
 
             for (var i in selected_kayaks) {
-                var kayak_price = selected_kayaks[i].price*1+additional_price;
+                var kayak_price = selected_kayaks[i].price*1+additional_price-low_price;
                 price = price + (kayak_price * number_off_days) + ( (kayak_price / 2) * number_on_days )
             }
             //$scope.env.details.push('Наценка за разграз сезона: '+additional_price);
