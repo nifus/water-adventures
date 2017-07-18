@@ -1,4 +1,50 @@
 <?php
+use Kunnu\Dropbox\Dropbox;
+use Kunnu\Dropbox\DropboxApp;
+
+
+Route::get('phones', function(){
+    $orders = App\Scheduler::get();
+    foreach($orders as $order ){
+
+        $phone = $order->phone;
+        $phone = preg_replace('#[^0-9]#','', $phone);
+        if ( empty($phone)){
+            continue;
+        }
+        if ( strlen($phone)==10 && $phone[0]==9){
+            $phone = '7'.$phone;
+        }
+        if ( $phone[0]==8 ){
+            $phone = preg_replace('#^8#','7', $phone);
+        }
+
+        $order->update(['phone'=>$phone]);
+        echo $phone.'<br>';
+    }
+
+
+
+});
+Route::get('test', function(){
+
+
+    $app = new DropboxApp("m7zs5xatxr2joth", "0vrmt0tkkxse6uv",'IuwiDhk_e4AAAAAAAAAJrrp7H2PJ04QqjyVwOCzhQHvsFDLkG6h-Ur9nKtWTA115');
+
+    $dropbox = new Dropbox($app);
+    $listFolderContents = $dropbox->listFolder("/");
+    $items = $listFolderContents->getItems();
+    $files  = $items->all();
+    foreach($files as $file){
+        var_dump($file->getName());
+        var_dump($file->getPathLower());
+        $temporaryLink = $dropbox->getTemporaryLink( $file->getPathLower() );
+
+        var_dump( $temporaryLink->getLink());
+
+    }
+
+});
 
 Route::get('pdf/{id}', function($id){
     $order = App\Scheduler::find($id);

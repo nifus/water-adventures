@@ -193,7 +193,6 @@
         };
 
         function updatePrice(begin, end, selected_kayaks, is_old_client, begin_evening_flag) {
-
             if ( begin_evening_flag ){
                 begin = moment(begin).add(1,'day');
             }

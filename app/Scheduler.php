@@ -33,6 +33,26 @@ class Scheduler extends Model
         return $this->belongsToMany('App\Paddle', 'scheduler_paddle')->withPivot('number');
     }
 
+    public function setPhoneAttribute($phone)
+    {
+
+            $phone = preg_replace('#[^0-9]#','', $phone);
+            if ( empty($phone)){
+                $this->attributes['phone']='';
+
+            }else{
+                if ( strlen($phone)==10 && $phone[0]==9){
+                    $phone = '7'.$phone;
+                }
+                if ( $phone[0]==8 ){
+                    $phone = preg_replace('#^8#','7', $phone);
+                }
+
+                $this->attributes['phone']=$phone;
+            }
+
+
+    }
     public function getBeginRentDayAttribute()
     {
         $date = new \DateTime($this->begin_rent);

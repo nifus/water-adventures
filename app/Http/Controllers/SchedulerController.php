@@ -53,7 +53,9 @@ class SchedulerController extends BaseController
         $order = Scheduler::find($id);
 
         $order->update($all);
+
         $order->Kayak()->sync($all['kayak']);
+
         $order->Paddle()->sync($all['paddle']);
         return response()->json(['success'=>true], 200, [], JSON_NUMERIC_CHECK );
     }

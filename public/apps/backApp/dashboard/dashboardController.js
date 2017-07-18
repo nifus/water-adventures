@@ -12,18 +12,20 @@
             weekend: getNextWeekend(),
             hideCalendar: false,
             orders: [],
-            total:0,
+            total: 0,
             busyKayaks: [],
             freeKayaks: [],
             begin_task: null,
             end_task: null,
             tasks: [],
             total_tasks: 0,
-            transfers:[],
-            action: 'orders',
+            transfers: [],
+            action: 'free',
             startDate: null,
-            endDate:null,
-            waiting_orders:[]
+            endDate: null,
+            waiting_orders: [],
+            selected_kayaks:[],
+            selected_price:0
         };
 
 
@@ -36,19 +38,19 @@
             $scope.setDate(moment().toDate(), moment().toDate())
         };
         $scope.setTomorrow = function () {
-            $scope.setDate(moment().add(1,'day').toDate(), moment().add(1,'day').toDate())
+            $scope.setDate(moment().add(1, 'day').toDate(), moment().add(1, 'day').toDate())
         };
 
         $scope.setCurrentHolidays = function () {
             var now = moment();
             var day_of_week = now.format('E');
             var start, end;
-            if ( day_of_week<5 ){
-                start = moment().add((5-day_of_week) ,'days');
-                end = moment().add((7-day_of_week), 'days');
-            }else if( day_of_week>=5 ){
-                start = moment().subtract(day_of_week-5 ,'days');
-                end = moment().subtract(day_of_week-7 ,'days');
+            if (day_of_week < 5) {
+                start = moment().add((5 - day_of_week), 'days');
+                end = moment().add((7 - day_of_week), 'days');
+            } else if (day_of_week >= 5) {
+                start = moment().subtract(day_of_week - 5, 'days');
+                end = moment().subtract(day_of_week - 7, 'days');
             }
             $scope.setDate(start.toDate(), end.toDate())
         };
@@ -57,12 +59,12 @@
             var now = moment();
             var day_of_week = now.format('E');
             var start, end;
-            if ( day_of_week<5 ){
-                start = moment().add((5-day_of_week) ,'days');
-                end = moment().add((7-day_of_week), 'days');
-            }else if( day_of_week>=5 ){
-                start = moment().subtract(day_of_week-5 ,'days');
-                end = moment().subtract(day_of_week-7 ,'days');
+            if (day_of_week < 5) {
+                start = moment().add((5 - day_of_week), 'days');
+                end = moment().add((7 - day_of_week), 'days');
+            } else if (day_of_week >= 5) {
+                start = moment().subtract(day_of_week - 5, 'days');
+                end = moment().subtract(day_of_week - 7, 'days');
             }
             $scope.setDate(start.toDate(), end.toDate())
         };
@@ -72,45 +74,45 @@
         };
 
         function updateTransfers() {
-            var count =  moment($scope.env.endDate).diff( moment($scope.env.startDate), 'days' )+1;
+            var count = moment($scope.env.endDate).diff(moment($scope.env.startDate), 'days') + 1;
             var total_tasks = 0;
             var date;
             var tasks;
             var total = [];
-            for( var i=0; i<count; i++ ){
-                date = moment($scope.env.startDate).add(i,'days');
+            for (var i = 0; i < count; i++) {
+                date = moment($scope.env.startDate).add(i, 'days');
                 tasks = [];
                 $scope.env.busyKayaks.forEach(function (order) {
-                    if (order.status=='canceled' || order.status=='waiting' ){
+                    if (order.status == 'canceled' || order.status == 'waiting') {
                         return;
                     }
-                    if ( moment(order.begin_rent).isSame(date,'day')==true ){
-                        if ( order.status=='working' ||  order.status=='closed'){
-                            tasks.push( {type:'closed', order: order} );
+                    if (moment(order.begin_rent).isSame(date, 'day') == true) {
+                        if (order.status == 'working' || order.status == 'closed') {
+                            tasks.push({type: 'closed', order: order});
                             total_tasks++;
-                        }else{
-                            if ( order.delivery_from=='1' ){
-                                tasks.push( {type:'transfer_to', order: order} );
+                        } else {
+                            if (order.delivery_from == '1') {
+                                tasks.push({type: 'transfer_to', order: order});
                                 total_tasks++;
-                            }else{
-                                tasks.push( {type:'order_to', order: order} );
+                            } else {
+                                tasks.push({type: 'order_to', order: order});
                                 total_tasks++;
                             }
                         }
 
                     }
 
-                    if ( moment(order.end_rent).isSame(date,'day')==true ){
+                    if (moment(order.end_rent).isSame(date, 'day') == true) {
 
-                        if ( order.status=='closed'){
-                            tasks.push( {type:'closed', order: order} );
+                        if (order.status == 'closed') {
+                            tasks.push({type: 'closed', order: order});
                             total_tasks++;
-                        }else{
-                            if ( order.delivery_to=='1' ){
-                                tasks.push( {type:'transfer_from', order: order} );
+                        } else {
+                            if (order.delivery_to == '1') {
+                                tasks.push({type: 'transfer_from', order: order});
                                 total_tasks++;
-                            }else{
-                                tasks.push( {type:'order_from', order: order} );
+                            } else {
+                                tasks.push({type: 'order_from', order: order});
                                 total_tasks++;
                             }
                         }
@@ -119,7 +121,7 @@
                     }
 
                 });
-                total.push({date:date.format('dddd, D MMM'), tasks:tasks})
+                total.push({date: date.format('dddd, D MMM'), tasks: tasks})
             }
 
             $scope.env.tasks = total;
@@ -131,10 +133,10 @@
 
         function updateTotal(orders) {
             var total = 0;
-            for( var i in orders ){
+            for (var i in orders) {
                 var order = orders[i];
-                if ( order.status!='canceled' && order.status!='waiting' ){
-                    total+=parseFloat(order.price);
+                if (order.status != 'canceled' && order.status != 'waiting') {
+                    total += parseFloat(order.price);
                 }
             }
             $scope.env.total = total;
@@ -142,7 +144,8 @@
 
         $scope.setAction = function (action) {
             $scope.env.action = action;
-        }
+        };
+
         $scope.changeStatus = function (status) {
             if (status == '') {
                 $scope.changeDate()
@@ -168,25 +171,21 @@
             $scope.env.endDate = moment(end).hours(23).minutes(59).toDate();
 
 
-
             var startMoment = moment(moment($scope.env.startDate).format('YYYY-MM-D'));
             var endMoment = moment($scope.env.endDate);
 
 
-
-
             $scope.env.busyKayaks = $scope.env.orders.filter(function (order) {
-
-                if (order.status=='waiting') {
+                if (order.status == 'waiting') {
                     return false
                 }
 
-
-
+                if ( order.begin_evening_flag==1 && start==end && order.Begin.isSame(startMoment)) {
+                    order.busy_after_evening = true
+                }
                 if (order.Begin.isBetween(startMoment, endMoment)) {
                     return true
                 }
-
 
                 if (order.End.isBetween(startMoment, endMoment)) {
                     return true
@@ -198,20 +197,29 @@
                 if (order.Begin.isSame(startMoment) || order.End.isSame(endMoment)) {
                     return true
                 }
+
                 return false;
             });
 
-            $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
-            updateTransfers()
 
-            updateTotal( $scope.env.busyKayaks);
+            $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
+            updateTransfers();
+
+            updateTotal($scope.env.busyKayaks);
 
             updateWaiting(startMoment, endMoment, $scope.env.orders);
         };
 
-        function updateWaiting(startMoment, endMoment , orders) {
+        $scope.$watch(function () {
+            return [$scope.env.selected_kayaks,$scope.env.startDate,$scope.env.endDate,$scope.env.begin_evening_flag]
+        }, function (value) {
+            $scope.env.selected_price = updatePrice( $scope.env.startDate, $scope.env.endDate, $scope.env.selected_kayaks, 0,$scope.env.begin_evening_flag)
 
-            var waiting_orders =[];
+        },true);
+
+        function updateWaiting(startMoment, endMoment, orders) {
+
+            var waiting_orders = [];
             orders = orders.filter(function (order) {
                 if (order.Begin.isBetween(startMoment, endMoment)) {
                     return true
@@ -226,8 +234,8 @@
                 return false;
             });
 
-            for( var i in orders ){
-                if ( orders[i].status=='waiting' ){
+            for (var i in orders) {
+                if (orders[i].status == 'waiting') {
                     waiting_orders.push(orders[i])
                 }
             }
@@ -317,24 +325,30 @@
             $scope.setDate($scope.env.weekend.begin.toDate(), $scope.env.weekend.end.toDate());
             $scope.env.freeKayaks = getFreeKayaks($scope.env.busyKayaks, $scope.env.kayaks);
 
-           // $scope.setTaskDate(moment().toDate(), moment().add(1, 'days').toDate());
+            // $scope.setTaskDate(moment().toDate(), moment().add(1, 'days').toDate());
 
         });
 
 
         function getFreeKayaks(orders, kayaks) {
-            return $scope.env.kayaks.filter(function (kayak) {
+            return kayaks.filter(function (kayak) {
                 for (var i in orders) {
                     var order = orders[i];
-                    if (order.status!='waiting' && order.status!='canceled' && order.status!='closed' ){
-                        for (var j in order.kayak) {
-                            var busy = order.kayak[j];
-                            if (busy.id == kayak.id) {
-                                return false;
-                            }
-                        }
+                    if (order.status == 'waiting' || order.status == 'canceled' || order.status == 'closed') {
+                        return false;
                     }
 
+                    for (var j in order.kayak) {
+                        var busy = order.kayak[j];
+                        if (busy.id == kayak.id) {
+                            if ( order.busy_after_evening!=true ){
+                                return false;
+                            }else{
+                                kayak.busy_after_evening = true;
+                            }
+
+                        }
+                    }
                 }
                 return true;
             })
@@ -361,8 +375,66 @@
                 }
             });
         }
+        function isWeekend(date) {
+            var day = moment(date).format('d');
+            if (day == 0 || day == 6) {
+                return true;
+            }
+            return false
+        }
+        function updatePrice(begin, end, selected_kayaks, is_old_client, begin_evening_flag) {
+            if ( begin_evening_flag ){
+                begin = moment(begin).add(1,'day');
+            }
+            var number_of_days = moment(end).diff(begin, 'days');
+
+            $scope.env.details = [];
+            var price = 0;
+
+            $scope.env.details.push('Всего дней: '+(number_of_days+1) );
+            var number_on_days = 0;
+            var number_off_days = 0;
+            // В июле на 200р больлше
+            var additional_price = moment(begin).isAfter('2017-06-20')  && moment(begin).isBefore('2017-08-1') ? 200 : 0;
+
+            //  В августе на 200р меньше
+            var low_price = moment(begin).isAfter('2017-08-1') ? 200 : 0;
 
 
+            for (var i = 0; i <= number_of_days; i++) {
+                if (isWeekend(moment(begin).add(i, 'days'))) {
+                    number_off_days++;
+                } else {
+                    number_on_days++;
+                }
+            }
+            $scope.env.details.push('Всего выходных: '+number_off_days);
+            $scope.env.details.push('Всего будних: '+number_on_days);
+            if ( begin_evening_flag ){
+                $scope.env.details.push('Заезд после 17:00');
+
+            }
+
+            for (var i in selected_kayaks) {
+                var kayak_price = selected_kayaks[i].price*1+additional_price-low_price;
+                price = price + (kayak_price * number_off_days) + ( (kayak_price / 2) * number_on_days )
+            }
+            //$scope.env.details.push('Наценка за разграз сезона: '+additional_price);
+            $scope.env.details.push('Общая цена без скидок: '+price);
+            if (number_of_days+1 >= 4) {
+                price = price - (price / 100) * 10;
+                $scope.env.details.push('Скидка 10% за количество дней: '+price);
+            }
+
+            if (is_old_client == true) {
+                price = price - (price / 100) * 5;
+                $scope.env.details.push('Скидка 5% для старых клиентов: '+price);
+
+            }
+            $scope.env.details.push('Итоговая цена: '+price);
+
+            return price;
+        }
 
 
     }

@@ -75,15 +75,25 @@
 
     <div ng-if="env.action=='free'" style="margin:10px" class="row">
 
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="env.begin_evening_flag"> После 19:00
+            </label>
+        </div>
         <table class="table table-striped table-hover">
             <tbody>
-            <tr ng-repeat="kayak in env.freeKayaks">
+            <tr ng-repeat="kayak in env.freeKayaks" ng-class="{'danger': kayak.busy_after_evening==true}">
+                <td><input type="checkbox" checklist-model="env.selected_kayaks" checklist-value="kayak"></td>
                 <td>{{kayak.title}}</td>
                 <td>{{kayak.color}}</td>
                 <td>{{kayak.note}}</td>
             </tr>
 
+
             </tbody>
+            <tfoot>
+                <td colspan="4">Итого: {{env.selected_price}}</td>
+            </tfoot>
         </table>
 
 
@@ -96,11 +106,15 @@
                 ng-class="{'danger':order.status=='canceled', 'warning':order.passport==''||order.passport_name==''}">
                 <td style="width: 15px"><a ui-sref="order-edit({id:order.id})">{{order.id}}</a></td>
                 <td style="width: 130px">
-                    {{order.phone|tel}}
+                    <a href="tel:{{order.phone}}">{{order.phone|tel}}</a>
                 </td>
 
                 <td><a target="_blank" ng-href="/pdf/{{order.id}}">{{order.price|currency:'Р'}}</a></td>
-                <td style="width: 100px">{{order.BeginShort}} {{order.EndShort}}</td>
+                <td style="width: 100px">
+                    <span style="color:red" ng-if="order.begin_evening_flag==1"> {{order.BeginShort}}  </span>
+                    <span ng-if="order.begin_evening_flag!=1"> {{order.BeginShort}}  </span>
+                    <br>{{order.EndShort}}
+                </td>
                 <td >
                     <strong>Туда: </strong> {{order.delivery_from=='1' ? order.place_of_renting : '-'}}
                     <br>
