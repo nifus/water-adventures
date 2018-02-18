@@ -1,5 +1,6 @@
 @extends('layout')
 
+@section('header')Условия бронирования байдарок@endsection
 
 
 @section('content')

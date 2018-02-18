@@ -1,5 +1,6 @@
 @extends('layout')
 
+@section('header')Как нас найти@endsection
 
 
 @section('content')
@@ -34,7 +35,7 @@
         Санкт-Петербурга, спуститься по ступенькам и пройти 100 метров по тропинке вдоль ЖД путей до моста. Вход на
         лодочную станцию Розовый Рассвет напротив моста (лодочных станций 3, легко ошибиться)
     <div style="text-align: center">
-        <img style="width: 500px" src="https://pp.userapi.com/c638119/v638119730/399b1/mq0j0Qy2yZg.jpg" alt="">
+        <img style="width: 500px" src="/images/address1.jpg" alt="">
     </div>
     </p>
 
@@ -43,8 +44,8 @@
         При въезде в Приозерск на первом светофоре налево (ул Социалистическая), до конца улицы и налево под жд мост.
         Лодочная Станция Розовый Рассвет (на втором фото)</p>
     <div style="text-align: center">
-        <img style="width: 500px" src="https://pp.userapi.com/c638119/v638119730/399a7/uGXIfP01Wx8.jpg" alt="">
-        <img style="width: 500px" src="https://pp.userapi.com/c638119/v638119730/3999d/4ktxfBR4SpM.jpg" alt="">
+        <img style="width: 500px" src="/images/address2.jpg" alt="">
+        <img style="width: 500px" src="/images/address3.jpg" alt="">
     </div>
 
 @endsection

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Прокат байдарок на озерах Вуокса, Шхерах Ладоги и Белом море</title>
+    <title>@yield('header')</title>
 
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -14,7 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=VK-RTRG-160425-oTTz';</script>
-
+    <!--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+-->
 </head>
 <body >
 <div  id="background"></div>
@@ -25,13 +28,14 @@
 </div>
 -->
 <div id="header">
-    <div class="col-md-8 left">
-        <h1><a href="/">Прокат байдарок на Вуоксе,<br>Ладожских шхерах и Белом море</a></h1>
+    <div class="col-xs-7 col-sm-7 col-md-8 left">
+        <h1><a href="/" style="text-decoration: none">Прокат байдарок на Вуоксе <br> и шхерах Ладожского озера </a></h1>
     </div>
-    <div class="col-md-4 right">
+    <div class="col-xs-5 col-sm-5 col-md-4 right">
         <h1>
-            +7 921 846 64 69<br>
-            <!--<a href="mailto:hi@water-adventures.ru">заказать звонок</a>--><br>
+            <span style="text-transform: lowercase ">тел.:</span> +7 921 846 64 69<br><br>
+        <!--<a href="mailto:hi@water-adventures.ru">заказать звонок</a>
+            <img style="width:200px;cursor:pointer" src="http://simvolplus.ru/upload/knopka4.png" alt="">-->
         </h1>
     </div>
 </div>
@@ -39,61 +43,60 @@
 
     <div id="content" class="container-fluid">
 
-        <div  class="col-md-2">
+        <div  class="menu col-sm-2 col-xs-2 col-md-2">
 
             <div class="menu-item coral">
-                <a href="/reservation.html"><img src="https://png.icons8.com/data-quality/win10/1600"
-                     alt="">
-                Забронировать<br>байдарку</a>
+                <a href="/reservation.html"><img src="/images/icons/1600.png"
+                                                 alt="">
+                    Забронировать<br>байдарку</a>
             </div>
             <div class="menu-item blue" >
-                <a href="/maps.html"><img src="https://cdn1.iconfinder.com/data/icons/mirrored-twins-icon-set-hollow/512/PixelKit_location_icon.png"
+                <a href="/maps.html"><img src="/images/icons/PixelKit_location_icon.png"
                                           alt="">
-                Как нас найти</a>
+                    Как нас найти</a>
             </div>
 
             <div class="menu-item green">
-                <a href="/prices.html"><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/639542-200.png"
-                     alt="">
-                Наши байдарки<br>и цены</a>
+                <a href="/prices.html"><img src="/images/icons/639542-200.png"
+                                            alt="">
+                    Наши байдарки<br>и цены</a>
             </div>
 
             <div class="menu-item yellow" >
-                <a href="/conditions.html"><img src="http://optica100.ru/images/pravila.png"
-                     alt="">
-                Условия аренды</a>
+                <a href="/conditions.html"><img src="/images/icons/pravila.png"
+                                                alt="">
+                    Условия аренды</a>
             </div>
 
             <div class="menu-item coral" style="background-color: lightsalmon">
-                <a href="/arenda-baidarok-na-vuokse.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Canoeing_%28flatwater%29_pictogram.svg/1000px-Canoeing_%28flatwater%29_pictogram.svg.png"
+                <a href="/arenda-baidarok-na-vuokse.html"><img src="/images/icons/krepost_korela.png"
                                                                alt="Аренда байдарок на вуоксе">
                     Аренда байдарок на Вуоксе</a>
             </div>
 
-            <div class="menu-item coral" style="background-color: lightsalmon">
-                <a href="/arenda-baidarok-na-ladoge.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Canoeing_%28flatwater%29_pictogram.svg/1000px-Canoeing_%28flatwater%29_pictogram.svg.png"
-                     alt="Аренда байдарок в ладожских шхерах">
+            <div class="menu-item coral" style="background-color: #deff7a">
+                <a href="/arenda-baidarok-na-ladoge.html"><img src="/images/icons/canoe.png"
+                                                               alt="Аренда байдарок в ладожских шхерах">
                     Аренда байдарок на ладоге</a>
             </div>
 
             <div class="menu-item coral" style="background-color: lightslategrey">
-                <a href="/arenda-baidarok-na-belom-more.html"><img src="https://icon-icons.com/icons2/37/PNG/512/sea_waves_3699.png"
-                     alt="">
-                Аренда на<br>Белом море</a>
+                <a href="/arenda-baidarok-na-belom-more.html"><img src="/images/icons/sea_waves_3699.png"
+                                                                   alt="">
+                    Аренда на<br>Белом море</a>
             </div>
 
             <div class="menu-item coral">
-                <a href="/nachinaushim.html"><img src="https://icon-icons.com/icons2/38/PNG/512/electrickettle_5527.png"
-                     alt="">
-                Начинающим</a>
+                <a href="/nachinaushim.html"><img src="/images/icons/electrickettle_5527.png"
+                                                  alt="">
+                    Начинающим</a>
             </div>
 
 
         </div>
 
-        <div class="col-md-10 " style="min-height:1360px;padding:20px;float:left;width:75%;background-color: white;opacity: 0.8;">
+        <div class="col-sm-12 col-xs-12  col-md-10 " style="padding:20px;min-height:1360px;float:left;width:75%;background-color: white;opacity: 0.9;">
             @yield('content')
-
         </div>
     </div>
 
@@ -155,5 +158,6 @@
   ga('send', 'pageview');
 
 </script>
+
 </body>
 </html>

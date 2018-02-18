@@ -3,8 +3,7 @@ html {
 }
 
 body {
-    font-family: 'Lucida Console', Monaco, monospace;
-
+    font-family: Helvetica, 'Times New Roman', Times, serif;
     height: 100%;
 }
 
@@ -21,7 +20,6 @@ a.link {
     height: 100%;
     background-image: url(/images/back.jpg);
     z-index: -1;
-
 }
 
 #header {
@@ -80,15 +78,13 @@ a.link {
     color: #333;
 }
 #content p{
-    font-size: 17px
+    font-size: 19px
 }
 #content h2{
     margin-top:0;
-
-    text-decoration: underline
 }
 .coral{
-    background-color: lightcoral;
+    background-color: #f53b3b;
 }
 .green{
     background-color: lightgreen;
@@ -113,6 +109,15 @@ a.link {
 #content div.menu-item:hover{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     opacity: 1;
+}
+#content ul.kayaks{
+    list-style-type: none;
+}
+#content ul.kayaks li{
+    clear:both;margin-bottom:30px
+}
+#content ul.kayaks li img{
+    width:200px;float:left;margin-right:10px
 }
 
 #footer {
@@ -151,7 +156,19 @@ a.link {
     #header h1 {
         font-size: 1.8em;
     }
+
+    #content div.menu-item img{
+        width: 50px;
+    }
+
+    #content div.menu-item{
+        width: 120px;
+        height: 120px;
+        padding:15px;
+        font-size: 12px;
+    }
 }
+
 
 @media (max-width: 1000px) {
     #footer ul {
@@ -166,19 +183,54 @@ a.link {
     #footer ul {
         width: 80%;
     }
-
+    #content div.menu{
+        display: none;
+    }
     #header h1 {
-        font-size: 1.6em;
+        font-size: 1.3em;
+    }
+
+    #content p{
+        font-size: 1em;
+    }
+
+    #content h2{
+        font-size: 1em;
+        font-weight: bold;
     }
 }
+@media (max-width: 600px) {
+    #content div.menu{
+        display: none;
+    }
+    #header h1 {
+        font-size: 1.3em;
+    }
+    #content h2{
+        font-size: 1em;
+        font-weight: bold;
+    }
+    #content p{
+        font-size: 1em;
+    }
+}
+
 @media (max-width: 500px) {
     #footer ul {
         width: 80%;
     }
 
     #header h1 {
-        font-size: 1.6em;
+        font-size: 0.8em;
     }
+    #content h2{
+        font-size: 1em;
+        font-weight: bold;
+    }
+    #content p{
+        font-size: 1em;
+    }
+
 }
 
 /*  INTRO */
